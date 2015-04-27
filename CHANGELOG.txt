@@ -1,0 +1,4 @@
+v1.0.0
+- initial release
+- iOS SDK v0.6.0
+- Android SDK v1.5.3

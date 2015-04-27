@@ -1,0 +1,15 @@
+.project
+.settings
+*.ipa
+*.apk
+*.stamp
+*.swf
+*.tmp
+android/.classpath
+android/AndroidManifest.xml
+android/bin
+android/gen
+android/proguard-project.txt
+android/project.properties
+bin/Branch-ANE.app.dSYM/Contents/
+*.xcuserstate

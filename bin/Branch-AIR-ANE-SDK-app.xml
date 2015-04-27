@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://ns.adobe.com/air/application/17.0">
+  <id>io.branch.BranchTest</id>
+  <filename>Branch-ANE</filename>
+  <name>Branch Test</name>
+  <versionNumber>1.0</versionNumber>
+  <initialWindow>
+    <content>Branch-AIR-ANE-SDK.swf</content>
+    <aspectRatio>portrait</aspectRatio>
+    <fullScreen>false</fullScreen>
+    <autoOrients>false</autoOrients>
+    <visible>true</visible>
+    <renderMode>auto</renderMode>
+  </initialWindow>
+  <supportedProfiles>desktop extendedDesktop mobileDevice extendedMobileDevice</supportedProfiles>
+  <iPhone>
+    <InfoAdditions><![CDATA[<key>UIDeviceFamily</key>
+			                <array>
+			                    <string>1</string>
+			                    <string>2</string>
+			                </array>
+			                <key>UIStatusBarStyle</key>
+			                <string>UIStatusBarStyleBlackOpaque</string>
+			                <key>UIRequiresPersistentWiFi</key>
+			                <string>YES</string>
+			                <key>branch_key</key>
+							<string>key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp</string>]]></InfoAdditions>
+    <requestedDisplayResolution>high</requestedDisplayResolution>
+  </iPhone>
+  <android>
+    <manifestAdditions><![CDATA[<manifest android:installLocation="auto">
+							<uses-permission android:name="android.permission.INTERNET"/>
+							<application android:enabled="true">
+								<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp" />
+								<activity android:excludeFromRecents="false">
+									<intent-filter>
+										<action android:name="android.intent.action.MAIN"/>
+										<category android:name="android.intent.category.LAUNCHER"/>
+									</intent-filter>
+								</activity>
+								<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" />
+							</application>
+						</manifest>]]></manifestAdditions>
+  </android>
+  <extensions>
+    <extensionID>io.branch.nativeExtensions.Branch</extensionID>
+  </extensions>
+</application>
+
