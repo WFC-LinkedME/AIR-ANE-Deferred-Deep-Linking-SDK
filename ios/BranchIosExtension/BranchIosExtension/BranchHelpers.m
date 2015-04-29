@@ -26,7 +26,7 @@
         
         if (!error) {
             
-            [self dispatchEvent:@"INIT_SUCCESSED" withParams:@""];
+            [self dispatchEvent:@"INIT_SUCCESSED" withParams:params.description];
             
         } else {
             

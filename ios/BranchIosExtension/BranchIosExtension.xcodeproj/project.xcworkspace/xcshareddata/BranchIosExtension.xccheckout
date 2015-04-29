@@ -10,14 +10,14 @@
 	<string>BranchIosExtension</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>DC12D81856529D2135EE649947C223F77A96193B</key>
+		<key>C6423A4673E372AFDA1622825995586F780651D4</key>
 		<string>https://github.com/BranchMetrics/Branch-AIR-ANE-SDK.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ios/BranchIosExtension/BranchIosExtension.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DC12D81856529D2135EE649947C223F77A96193B</key>
+		<key>C6423A4673E372AFDA1622825995586F780651D4</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DC12D81856529D2135EE649947C223F77A96193B</string>
+	<string>C6423A4673E372AFDA1622825995586F780651D4</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DC12D81856529D2135EE649947C223F77A96193B</string>
+			<string>C6423A4673E372AFDA1622825995586F780651D4</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Branch-AIR-ANE-SDK</string>
 		</dict>

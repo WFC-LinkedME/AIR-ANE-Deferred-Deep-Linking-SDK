@@ -16,6 +16,44 @@ Register you app
 ----------------
 You can sign up for your own app id at [https://dashboard.branch.io](https://dashboard.branch.io)
 
+Configuration (for tracking)
+----------------------------
+Ideally, you want to use our links any time you have an external link pointing to your app (share, invite, referral, etc) because:
+
+1. Our dashboard can tell you where your installs are coming from
+1. Our links are the highest possible converting channel to new downloads and users
+1. You can pass that shared data across install to give new users a custom welcome or show them the content they expect to see
+
+Our linking infrastructure will support anything you want to build. If it doesn't, we'll fix it so that it does: just reach out to alex@branch.io with requests.
+
+Register a URI scheme direct deep linking (optional but recommended)
+--------------------------------------------------------------------
+In your project's `*-app.xml` file, you can register your app to respond to direct deep links (yourapp:// in a mobile browser) by adding a URI scheme. Also, make sure to change **yourApp** to a unique string that represents your app name.  
+On iOS:
+```xml
+<key>CFBundleURLTypes</key>
+<array>
+	<dict>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<string>yourApp</string>
+		</array>
+	</dict>
+</array>
+```
+On Android:
+```xml
+<activity android:launchMode="singleTask">
+	<intent-filter>
+		<data android:scheme="yourApp android:host="open" />
+		<action android:name="android.intent.action.VIEW" />
+		<category android:name="android.intent.category.DEFAULT" />
+		<category android:name="android.intent.category.BROWSABLE" />
+	</intent-filter>
+</activity>
+```
+For a full example of the `*-app.xml` please refer to the [demo](https://github.com/BranchMetrics/Branch-AIR-ANE-SDK/blob/master/bin/Branch-AIR-ANE-SDK-app.xml).
+
 Special settings on iOS
 -----------------------
 Inside the `*-app.xml` you must add **your Branch App Key** (refer to the [dashboard](https://dashboard.branch.io) to get it).
@@ -42,19 +80,8 @@ Inside the `*-app.xml` you must add **your Branch App Key** (refer to the [dashb
 ```
 For a full example of the `*-app.xml` please refer to the [demo](https://github.com/BranchMetrics/Branch-AIR-ANE-SDK/blob/master/bin/Branch-AIR-ANE-SDK-app.xml).
 
-Configuration (for tracking)
-============================
-
-Ideally, you want to use our links any time you have an external link pointing to your app (share, invite, referral, etc) because:
-
-1. Our dashboard can tell you where your installs are coming from
-1. Our links are the highest possible converting channel to new downloads and users
-1. You can pass that shared data across install to give new users a custom welcome or show them the content they expect to see
-
-Our linking infrastructure will support anything you want to build. If it doesn't, we'll fix it so that it does: just reach out to alex@branch.io with requests.
-
-Initialize SDK
---------------
+Initialize SDK And Register Deep Link Routing Function
+------------------------------------------------------
 *For a full example refer to the demo [as3 file](https://github.com/BranchMetrics/Branch-AIR-ANE-SDK/blob/master/test/src/BranchTest.as).*
 
 Inside your `Main.as` make the following import:
@@ -79,6 +106,12 @@ private function initFailed(bEvt:BranchEvent):void {
 
 private function initSuccessed(bEvt:BranchEvent):void {
 	trace("BranchEvent.INIT_SUCCESSED", bEvt.informations);
+	
+	// params are the deep linked params associated with the link that the user clicked before showing up
+	// params will be empty if no data found
+	var referringParams:Object = JSON.parse(bEvt.informations);
+	
+	//trace(referringParams.user);
 }
 ```
 

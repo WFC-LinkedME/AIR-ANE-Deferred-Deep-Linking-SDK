@@ -69,14 +69,15 @@ DEFINE_ANE_FUNCTION(logout) {
 }
 
 
-/*bool applicationDidFinishLaunchingWithOptions(id self, SEL _cmd, UIApplication* application, NSDictionary* launchOptions) {
-    NSLog(@"applicationDidFinishLaunchingWithOptions");
+bool applicationDidFinishLaunchingWithOptions(id self, SEL _cmd, UIApplication* application, NSDictionary* launchOptions) {
+    //NSLog(@"applicationDidFinishLaunchingWithOptions");
+    
     Branch *branch = [Branch getInstance];
     [branch initSessionWithLaunchOptions:launchOptions andRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {
         
         if (!error) {
             
-            [branchHelpers dispatchEvent:@"INIT_SUCCESSED" withParams:@""];
+            [branchHelpers dispatchEvent:@"INIT_SUCCESSED" withParams:params.description];
             
         } else {
             
@@ -88,18 +89,19 @@ DEFINE_ANE_FUNCTION(logout) {
 }
 
 bool applicationOpenURLSourceApplication(id self, SEL _cmd, UIApplication* application, NSURL* url, NSString* sourceApplication, id annotation) {
-    NSLog(@"applicationOpenURLSourceApplication");
+    //NSLog(@"applicationOpenURLSourceApplication");
+    
     // if handleDeepLink returns YES, and you registered a callback in initSessionAndRegisterDeepLinkHandler, the callback will be called with the data associated with the deep link
     if (![[Branch getInstance] handleDeepLink:url]) {
         // do other deep link routing for the Facebook SDK, Pinterest SDK, etc
     }
     
     return YES;
-}*/
+}
 
 void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
     
-    /*id delegate = [[UIApplication sharedApplication] delegate];
+    id delegate = [[UIApplication sharedApplication] delegate];
     
     Class objectClass = object_getClass(delegate);
     
@@ -122,7 +124,7 @@ void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext 
         objc_registerClassPair(modDelegate);
     }
     
-    object_setClass(delegate, modDelegate);*/
+    object_setClass(delegate, modDelegate);
     
     static FRENamedFunction functionMap[] = {
         MAP_FUNCTION(init, NULL),

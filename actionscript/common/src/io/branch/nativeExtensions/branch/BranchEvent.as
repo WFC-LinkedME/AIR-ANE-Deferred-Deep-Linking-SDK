@@ -5,7 +5,7 @@ package io.branch.nativeExtensions.branch {
 	public class BranchEvent extends Event {
 
 		/**
-		* Dispatched when the key has been succesfully set up.
+		* Dispatched when the key has been succesfully set up. See event's <code>informations</code> for referringParams.
 		*/
 		static public var INIT_SUCCESSED:String = "INIT_SUCCESSED";
 

@@ -33,6 +33,7 @@
 		</td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">json</span>:String</code> (default = <code>{}</code>)<code></code> &mdash; a stringify JSON, you can access this data from any instance that installs or opens the app from this link, customize the display of the Branch link and customize the desktop redirect location
 		</td></tr></table></p></div><a name="init()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">init</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function init():void</code><p></p><p></p><p>
 		Init the Branch SDK. For iOS and Android, the key must be set in the app.xml Please refer to the README.md and the example.
+		You'll get the deep linked params associated with the link that the user clicked before showing up via the <code>BranchEvent.INIT_SUCCESSED</code> event.
 		</p></div><a name="logout()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">logout</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function logout():void</code><p></p><p></p><p>
 		If you provide a logout function in your app, be sure to clear the user when the logout completes.
 		This will ensure that all the stored parameters get cleared and all events are properly attributed to the right identity.
@@ -41,4 +42,4 @@
 		Often, you might have your own user IDs, or want referral and event data to persist across platforms or uninstall/reinstall.
 		It's helpful if you know your users access your service from different devices. This where we introduce the concept of an 'identity'.
 		</p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">userId</span>:String</code> &mdash; Identify a user, with his user id.
-		</td></tr></table></p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Lundi Avril 27 2015, 11:56 AM +02:00  </center></div></body></html><!--<br/>Lundi Avril 27 2015, 11:56 AM +02:00  -->
+		</td></tr></table></p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Mercredi Avril 29 2015, 11:03 AM +02:00  </center></div></body></html><!--<br/>Mercredi Avril 29 2015, 11:03 AM +02:00  -->

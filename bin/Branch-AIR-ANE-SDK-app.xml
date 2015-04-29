@@ -3,7 +3,7 @@
   <id>io.branch.BranchTest</id>
   <filename>Branch-ANE</filename>
   <name>Branch Test</name>
-  <versionNumber>1.0</versionNumber>
+  <versionNumber>1.0.0</versionNumber>
   <initialWindow>
     <content>Branch-AIR-ANE-SDK.swf</content>
     <aspectRatio>portrait</aspectRatio>
@@ -23,6 +23,15 @@
 			                <string>UIStatusBarStyleBlackOpaque</string>
 			                <key>UIRequiresPersistentWiFi</key>
 			                <string>YES</string>
+			                <key>CFBundleURLTypes</key>
+			                <array>
+			                	<dict>
+			                		 <key>CFBundleURLSchemes</key>
+			                		 <array>
+			                		 	<string>branch-ane-test</string>
+			                		 </array>
+		                		 </dict>
+		                	</array>
 			                <key>branch_key</key>
 							<string>key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp</string>]]></InfoAdditions>
     <requestedDisplayResolution>high</requestedDisplayResolution>
@@ -32,13 +41,19 @@
 							<uses-permission android:name="android.permission.INTERNET"/>
 							<application android:enabled="true">
 								<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp" />
-								<activity android:excludeFromRecents="false">
+								<activity android:excludeFromRecents="false" android:launchMode="singleTask">
 									<intent-filter>
 										<action android:name="android.intent.action.MAIN"/>
 										<category android:name="android.intent.category.LAUNCHER"/>
 									</intent-filter>
+									<intent-filter>
+								        <data android:scheme="branch-ane-test" android:host="open" />
+								        <action android:name="android.intent.action.VIEW" />
+								        <category android:name="android.intent.category.DEFAULT" />
+								        <category android:name="android.intent.category.BROWSABLE" />
+								    </intent-filter>
 								</activity>
-								<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" />
+								<activity android:name="io.branch.nativeExtensions.branch.BranchActivity"/>
 							</application>
 						</manifest>]]></manifestAdditions>
   </android>

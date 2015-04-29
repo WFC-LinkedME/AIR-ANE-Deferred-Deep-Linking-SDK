@@ -32,6 +32,12 @@ package {
 		private function _initSuccessed(bEvt:BranchEvent):void {
 			trace("BranchEvent.INIT_SUCCESSED", bEvt.informations);
 			
+			// params are the deep linked params associated with the link that the user clicked before showing up
+			// params will be empty if no data found
+			
+			var referringParams:Object = JSON.parse(bEvt.informations);
+			//trace(referringParams.user);
+			
 			_branch.setIdentity("Bob");
 		}
 		
