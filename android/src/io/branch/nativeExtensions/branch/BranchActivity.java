@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.view.WindowManager;
 
 public class BranchActivity extends Activity {
 	
@@ -16,6 +17,8 @@ public class BranchActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 		
 		branch = Branch.getInstance(getApplicationContext());
 		

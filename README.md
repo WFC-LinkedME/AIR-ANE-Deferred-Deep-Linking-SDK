@@ -16,6 +16,33 @@ Register you app
 ----------------
 You can sign up for your own app id at [https://dashboard.branch.io](https://dashboard.branch.io)
 
+Special settings on iOS
+-----------------------
+Inside the `*-app.xml` you must add **your Branch App Key** (refer to the [dashboard](https://dashboard.branch.io) to get it).
+```xml
+<iPhone><InfoAdditions><![CDATA[
+	<!-- other stuff -->
+	<key>branch_key</key>
+	<string>key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp</string>
+]]></InfoAdditions></iPhone>
+```
+For a full example of the `*-app.xml` please refer to the [demo](https://github.com/BranchMetrics/Branch-AIR-ANE-SDK/blob/master/bin/Branch-AIR-ANE-SDK-app.xml).
+
+Special settings on Android
+---------------------------
+Inside the `*-app.xml` you must add **your Branch App Key** (refer to the [dashboard](https://dashboard.branch.io) to get it). And also don't forget to set the Branch activity:
+```xml
+<android><manifestAdditions><![CDATA[
+	<!-- other stuff -->
+	<application>
+		<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp" />
+		<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+		</activity
+	</application>
+]]></manifestAdditions></android>
+```
+For a full example of the `*-app.xml` please refer to the [demo](https://github.com/BranchMetrics/Branch-AIR-ANE-SDK/blob/master/bin/Branch-AIR-ANE-SDK-app.xml).
+
 Configuration (for tracking)
 ----------------------------
 Ideally, you want to use our links any time you have an external link pointing to your app (share, invite, referral, etc) because:
@@ -43,7 +70,7 @@ On iOS:
 ```
 On Android:
 ```xml
-<activity android:launchMode="singleTask">
+<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar">
 	<intent-filter>
 		<data android:scheme="yourApp android:host="open" />
 		<action android:name="android.intent.action.VIEW" />
@@ -51,32 +78,6 @@ On Android:
 		<category android:name="android.intent.category.BROWSABLE" />
 	</intent-filter>
 </activity>
-```
-For a full example of the `*-app.xml` please refer to the [demo](https://github.com/BranchMetrics/Branch-AIR-ANE-SDK/blob/master/bin/Branch-AIR-ANE-SDK-app.xml).
-
-Special settings on iOS
------------------------
-Inside the `*-app.xml` you must add **your Branch App Key** (refer to the [dashboard](https://dashboard.branch.io) to get it).
-```xml
-<iPhone><InfoAdditions><![CDATA[
-	<!-- other stuff -->
-	<key>branch_key</key>
-	<string>key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp</string>
-]]></InfoAdditions></iPhone>
-```
-For a full example of the `*-app.xml` please refer to the [demo](https://github.com/BranchMetrics/Branch-AIR-ANE-SDK/blob/master/bin/Branch-AIR-ANE-SDK-app.xml).
-
-Special settings on Android
----------------------------
-Inside the `*-app.xml` you must add **your Branch App Key** (refer to the [dashboard](https://dashboard.branch.io) to get it). And also don't forget to set the Branch activity:
-```xml
-<android><manifestAdditions><![CDATA[
-	<!-- other stuff -->
-	<application>
-		<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp" />
-		<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" />
-	</application>
-]]></manifestAdditions></android>
 ```
 For a full example of the `*-app.xml` please refer to the [demo](https://github.com/BranchMetrics/Branch-AIR-ANE-SDK/blob/master/bin/Branch-AIR-ANE-SDK-app.xml).
 

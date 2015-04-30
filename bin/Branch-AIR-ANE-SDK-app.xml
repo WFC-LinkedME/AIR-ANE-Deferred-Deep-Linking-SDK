@@ -41,19 +41,20 @@
 							<uses-permission android:name="android.permission.INTERNET"/>
 							<application android:enabled="true">
 								<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp" />
-								<activity android:excludeFromRecents="false" android:launchMode="singleTask">
+								<activity android:excludeFromRecents="false">
 									<intent-filter>
 										<action android:name="android.intent.action.MAIN"/>
 										<category android:name="android.intent.category.LAUNCHER"/>
 									</intent-filter>
+								</activity>
+								<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar">
 									<intent-filter>
 								        <data android:scheme="branch-ane-test" android:host="open" />
 								        <action android:name="android.intent.action.VIEW" />
 								        <category android:name="android.intent.category.DEFAULT" />
 								        <category android:name="android.intent.category.BROWSABLE" />
 								    </intent-filter>
-								</activity>
-								<activity android:name="io.branch.nativeExtensions.branch.BranchActivity"/>
+							   </activity>
 							</application>
 						</manifest>]]></manifestAdditions>
   </android>
