@@ -36,7 +36,7 @@ Inside the `*-app.xml` you must add **your Branch App Key** (refer to the [dashb
 	<!-- other stuff -->
 	<application>
 		<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp" />
-		<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+		<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
 		</activity
 	</application>
 ]]></manifestAdditions></android>
@@ -70,9 +70,9 @@ On iOS:
 ```
 On Android:
 ```xml
-<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
 	<intent-filter>
-		<data android:scheme="yourApp android:host="open" />
+		<data android:scheme="yourApp />
 		<action android:name="android.intent.action.VIEW" />
 		<category android:name="android.intent.category.DEFAULT" />
 		<category android:name="android.intent.category.BROWSABLE" />
