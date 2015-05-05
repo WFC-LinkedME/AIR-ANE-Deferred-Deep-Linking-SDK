@@ -26,7 +26,16 @@
         
         if (!error) {
             
-            [self dispatchEvent:@"INIT_SUCCESSED" withParams:params.description];
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
+            
+            NSString *JSONString;
+            
+            if (!jsonData)
+                JSONString = [[NSString alloc] init];
+            else
+                JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+            
+            [self dispatchEvent:@"INIT_SUCCESSED" withParams:JSONString];
             
         } else {
             
