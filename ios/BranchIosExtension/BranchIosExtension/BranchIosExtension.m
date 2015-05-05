@@ -83,8 +83,10 @@ bool applicationDidFinishLaunchingWithOptions(id self, SEL _cmd, UIApplication* 
             
             if (!jsonData)
                 JSONString = [[NSString alloc] init];
-            else
+            else {
                 JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+                JSONString = [JSONString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
+            }
             
             [branchHelpers dispatchEvent:@"INIT_SUCCESSED" withParams:JSONString];
             

@@ -32,8 +32,10 @@
             
             if (!jsonData)
                 JSONString = [[NSString alloc] init];
-            else
+            else {
                 JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+                JSONString = [JSONString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
+            }
             
             [self dispatchEvent:@"INIT_SUCCESSED" withParams:JSONString];
             
