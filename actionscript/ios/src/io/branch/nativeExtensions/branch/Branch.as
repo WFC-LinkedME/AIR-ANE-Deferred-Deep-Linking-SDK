@@ -57,5 +57,15 @@ package io.branch.nativeExtensions.branch {
 			
 			extensionContext.call("logout");
 		}
+
+		public function getLatestReferringParams():String {
+
+			return extensionContext.call("getLatestReferringParams") as String;
+		}
+
+		public function getFirstReferringParams():String {
+
+			return extensionContext.call("getFirstReferringParams") as String;
+		}
 	}
 }

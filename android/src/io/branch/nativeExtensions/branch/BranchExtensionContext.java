@@ -1,5 +1,7 @@
 package io.branch.nativeExtensions.branch;
 
+import io.branch.nativeExtensions.branch.functions.GetFirstReferringParamsFunction;
+import io.branch.nativeExtensions.branch.functions.GetLatestReferringParamsFunction;
 import io.branch.nativeExtensions.branch.functions.GetShortUrlFunction;
 import io.branch.nativeExtensions.branch.functions.InitFunction;
 import io.branch.nativeExtensions.branch.functions.LogoutFunction;
@@ -28,6 +30,8 @@ public class BranchExtensionContext extends FREContext {
 		functionMap.put("setIdentity", new SetIdentityFunction());
 		functionMap.put("getShortUrl", new GetShortUrlFunction());
 		functionMap.put("logout", new LogoutFunction());
+		functionMap.put("getLatestReferringParams", new GetLatestReferringParamsFunction());
+		functionMap.put("getFirstReferringParams", new GetFirstReferringParamsFunction());
 		
 		return functionMap;
 	}

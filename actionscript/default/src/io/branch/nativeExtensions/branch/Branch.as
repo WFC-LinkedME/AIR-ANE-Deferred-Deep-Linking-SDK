@@ -68,5 +68,25 @@ package io.branch.nativeExtensions.branch {
 		public function logout():void {
 			
 		}
+
+		/**
+		* These session parameters will be available at any point later on with this command. If no params, the dictionary will be empty.
+		* This refreshes with every new session (app installs AND app opens).
+		* @return a String with sessionParams, turn it into a JSON.
+		*/
+		public function getLatestReferringParams():String {
+
+			return "";
+		}
+
+		/**
+		* If you ever want to access the original session params (the parameters passed in for the first install event only), you can use this line.
+		* This is useful if you only want to reward users who newly installed the app from a referral link or something.
+		* @return a String with installParams, turn it into a JSON.
+		*/
+		public function getFirstReferringParams():String {
+
+			return "";
+		}
 	}
 }

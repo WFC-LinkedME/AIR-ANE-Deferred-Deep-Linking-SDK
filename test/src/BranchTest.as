@@ -39,10 +39,6 @@ package {
 			//trace(referringParams.user);
 			
 			_branch.setIdentity("Bob");
-		}
-		
-		private function _setIdentitySuccessed(bEvt:BranchEvent):void {
-			trace("BranchEvent.SET_IDENTITY_SUCCESSED", bEvt.informations);
 			
 			var dataToInclude:Object = {
 				user:"Joe",
@@ -58,6 +54,16 @@ package {
 			var tags:Array = ["version1", "trial6"];
 			
 			_branch.getShortUrl(tags, "text_message", BranchConst.FEATURE_TAG_SHARE, "level_3", JSON.stringify(dataToInclude));
+			
+			var sessionParams:String = _branch.getLatestReferringParams();
+			trace("sessionParams: " + sessionParams);
+			
+			var installParams:String = _branch.getFirstReferringParams();
+			trace("installParams: " + installParams);
+		}
+		
+		private function _setIdentitySuccessed(bEvt:BranchEvent):void {
+			trace("BranchEvent.SET_IDENTITY_SUCCESSED", bEvt.informations);
 		}
 		
 		private function _getShortUrlSuccessed(bEvt:BranchEvent):void {

@@ -89,6 +89,16 @@
     [[Branch getInstance] logout];
 }
 
+- (NSDictionary *) getLatestReferringParams {
+    
+    return [[Branch getInstance] getLatestReferringParams];
+}
+
+- (NSDictionary *) getFirstReferringParams {
+    
+    return [[Branch getInstance] getFirstReferringParams];
+}
+
 - (void) dispatchEvent:(NSString *) event withParams:(NSString * ) params {
     
     const uint8_t* par = (const uint8_t*) [params UTF8String];

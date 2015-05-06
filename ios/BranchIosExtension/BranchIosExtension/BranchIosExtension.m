@@ -68,6 +68,50 @@ DEFINE_ANE_FUNCTION(logout) {
     return NULL;
 }
 
+DEFINE_ANE_FUNCTION(getLatestReferringParams) {
+    
+    NSDictionary *sessionParams = [branchHelpers getLatestReferringParams];
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:sessionParams options:0 error:&error];
+    
+    NSString *JSONString;
+
+    if (!jsonData)
+        JSONString = [[NSString alloc] init];
+    else {
+        JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+        JSONString = [JSONString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
+    }
+
+    FREObject retStr;
+    [typeConverter FREGetString:JSONString asObject:&retStr];
+
+    return retStr;
+}
+
+DEFINE_ANE_FUNCTION(getFirstReferringParams) {
+    
+    NSDictionary *installParams = [branchHelpers getFirstReferringParams];
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:installParams options:0 error:&error];
+    
+    NSString *JSONString;
+    
+    if (!jsonData)
+        JSONString = [[NSString alloc] init];
+    else {
+        JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+        JSONString = [JSONString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
+    }
+    
+    FREObject retStr;
+    [typeConverter FREGetString:JSONString asObject:&retStr];
+    
+    return retStr;
+}
+
 
 bool applicationDidFinishLaunchingWithOptions(id self, SEL _cmd, UIApplication* application, NSDictionary* launchOptions) {
     //NSLog(@"applicationDidFinishLaunchingWithOptions");
@@ -141,7 +185,9 @@ void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext 
         MAP_FUNCTION(init, NULL),
         MAP_FUNCTION(setIdentity, NULL),
         MAP_FUNCTION(getShortUrl, NULL),
-        MAP_FUNCTION(logout, NULL)
+        MAP_FUNCTION(logout, NULL),
+        MAP_FUNCTION(getLatestReferringParams, NULL),
+        MAP_FUNCTION(getFirstReferringParams, NULL)
     };
     
     *numFunctionsToSet = sizeof( functionMap ) / sizeof( FRENamedFunction );

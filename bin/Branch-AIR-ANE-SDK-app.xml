@@ -46,15 +46,14 @@
 										<action android:name="android.intent.action.MAIN"/>
 										<category android:name="android.intent.category.LAUNCHER"/>
 									</intent-filter>
-								</activity>
-								<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
 									<intent-filter>
 										<data android:scheme="branch-ane-test" />
 								        <action android:name="android.intent.action.VIEW" />
 								        <category android:name="android.intent.category.DEFAULT" />
 								        <category android:name="android.intent.category.BROWSABLE" />
 								    </intent-filter>
-							   </activity>
+								</activity>
+								<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 							</application>
 						</manifest>]]></manifestAdditions>
   </android>

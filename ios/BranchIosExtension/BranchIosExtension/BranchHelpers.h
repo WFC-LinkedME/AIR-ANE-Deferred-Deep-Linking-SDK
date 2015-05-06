@@ -23,6 +23,9 @@
 - (void) getShortURL:(NSString *) json andTags:(NSArray *) tags andChannel:(NSString *) channel andFeature:(NSString *) feature andStage:(NSString *) stage;
 - (void) logout;
 
+- (NSDictionary *) getLatestReferringParams;
+- (NSDictionary *) getFirstReferringParams;
+
 - (void) dispatchEvent:(NSString *) event withParams:(NSString * ) params;
 
 @end

@@ -29,7 +29,7 @@ public class BranchActivity extends Activity {
 				
 				if (error == null) {
 					
-					BranchExtension.context.dispatchStatusEventAsync("INIT_SUCCESSED", referringParams.toString());
+					BranchExtension.context.dispatchStatusEventAsync("INIT_SUCCESSED", referringParams.toString().replace("\\", ""));
 					
 				} else {
 					
