@@ -1,10 +1,12 @@
 package {
 
-	import io.branch.nativeExtensions.branch.BranchConst;
 	import io.branch.nativeExtensions.branch.Branch;
+	import io.branch.nativeExtensions.branch.BranchConst;
 	import io.branch.nativeExtensions.branch.BranchEvent;
 
 	import flash.display.Sprite;
+	import flash.events.Event;
+	import flash.system.Capabilities;
 
 	/**
 	 * @author Aymeric
@@ -26,6 +28,20 @@ package {
 			_branch.addEventListener(BranchEvent.GET_SHORT_URL_FAILED, _getShortUrlFailed);
 			_branch.addEventListener(BranchEvent.GET_SHORT_URL_SUCCESSED, _getShortUrlSuccessed);
 
+			_branch.init();
+			
+			// On iOS when the app is launched via a link or an other app the branch init is automatically done thanks to
+			// application:openURL:sourceApplication:annotation: & application:didFinishLaunchingWithOptions: objective-c methods.
+			// On Android, unfortunately, we have to do it on AS3 side.
+			if (Capabilities.version.substr(0, 3) == "AND")
+				stage.addEventListener(Event.DEACTIVATE, _leavingTheApp);
+		}
+
+		private function _leavingTheApp(evt:Event):void {
+			stage.addEventListener(Event.ACTIVATE, _comingBackToTheApp);
+		}
+
+		private function _comingBackToTheApp(evt:Event):void {
 			_branch.init();
 		}
 

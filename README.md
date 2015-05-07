@@ -36,8 +36,7 @@ Inside the `*-app.xml` you must add **your Branch App Key** (refer to the [dashb
 	<!-- other stuff -->
 	<application>
 		<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp" />
-		<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
-		</activity
+		<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
 	</application>
 ]]></manifestAdditions></android>
 ```
@@ -70,13 +69,13 @@ On iOS:
 ```
 On Android:
 ```xml
-<activity android:name="io.branch.nativeExtensions.branch.BranchActivity" android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+<activity android:excludeFromRecents="false">
 	<intent-filter>
-		<data android:scheme="yourApp />
-		<action android:name="android.intent.action.VIEW" />
-		<category android:name="android.intent.category.DEFAULT" />
-		<category android:name="android.intent.category.BROWSABLE" />
-	</intent-filter>
+		<data android:scheme="yourApp" />
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+    </intent-filter>
 </activity>
 ```
 For a full example of the `*-app.xml` please refer to the [demo](https://github.com/BranchMetrics/Branch-AIR-ANE-SDK/blob/master/bin/Branch-AIR-ANE-SDK-app.xml).

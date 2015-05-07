@@ -65,4 +65,21 @@
     return FRE_OK;
 }
 
++ (NSString *) ConvertNSDictionaryToJSONString:(NSDictionary *) dictionary {
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&error];
+    
+    NSString *JSONString;
+    
+    if (!jsonData)
+        JSONString = [[NSString alloc] init];
+    else {
+        JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+        JSONString = [JSONString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
+    }
+    
+    return JSONString;
+}
+
 @end

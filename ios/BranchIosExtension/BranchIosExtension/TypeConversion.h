@@ -15,4 +15,6 @@
 - (FREResult) FREGetString:(NSString*)string asObject:(FREObject*)asString;
 - (FREResult) FREGetObject:(FREObject)object asSetOfStrings:(NSMutableSet**)value;
 
++ (NSString *) ConvertNSDictionaryToJSONString:(NSDictionary *) dictionary;
+
 @end

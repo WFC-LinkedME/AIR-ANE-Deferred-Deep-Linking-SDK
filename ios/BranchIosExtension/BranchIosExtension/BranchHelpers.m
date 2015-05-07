@@ -7,6 +7,7 @@
 //
 
 #import "BranchHelpers.h"
+#import "TypeConversion.h"
 
 @implementation BranchHelpers
 
@@ -26,16 +27,7 @@
         
         if (!error) {
             
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-            
-            NSString *JSONString;
-            
-            if (!jsonData)
-                JSONString = [[NSString alloc] init];
-            else {
-                JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
-                JSONString = [JSONString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
-            }
+            NSString *JSONString = [TypeConversion ConvertNSDictionaryToJSONString:params];
             
             [self dispatchEvent:@"INIT_SUCCESSED" withParams:JSONString];
             

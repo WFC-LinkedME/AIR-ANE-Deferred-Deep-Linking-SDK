@@ -71,18 +71,7 @@ DEFINE_ANE_FUNCTION(logout) {
 DEFINE_ANE_FUNCTION(getLatestReferringParams) {
     
     NSDictionary *sessionParams = [branchHelpers getLatestReferringParams];
-    
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:sessionParams options:0 error:&error];
-    
-    NSString *JSONString;
-
-    if (!jsonData)
-        JSONString = [[NSString alloc] init];
-    else {
-        JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
-        JSONString = [JSONString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
-    }
+    NSString *JSONString = [TypeConversion ConvertNSDictionaryToJSONString:sessionParams];
 
     FREObject retStr;
     [typeConverter FREGetString:JSONString asObject:&retStr];
@@ -93,18 +82,7 @@ DEFINE_ANE_FUNCTION(getLatestReferringParams) {
 DEFINE_ANE_FUNCTION(getFirstReferringParams) {
     
     NSDictionary *installParams = [branchHelpers getFirstReferringParams];
-    
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:installParams options:0 error:&error];
-    
-    NSString *JSONString;
-    
-    if (!jsonData)
-        JSONString = [[NSString alloc] init];
-    else {
-        JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
-        JSONString = [JSONString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
-    }
+    NSString *JSONString = [TypeConversion ConvertNSDictionaryToJSONString:installParams];
     
     FREObject retStr;
     [typeConverter FREGetString:JSONString asObject:&retStr];
@@ -121,16 +99,7 @@ bool applicationDidFinishLaunchingWithOptions(id self, SEL _cmd, UIApplication* 
         
         if (!error) {
             
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-            
-            NSString *JSONString;
-            
-            if (!jsonData)
-                JSONString = [[NSString alloc] init];
-            else {
-                JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
-                JSONString = [JSONString stringByReplacingOccurrencesOfString:@"\\/" withString:@"/"];
-            }
+            NSString *JSONString = [TypeConversion ConvertNSDictionaryToJSONString:params];
             
             [branchHelpers dispatchEvent:@"INIT_SUCCESSED" withParams:JSONString];
             
