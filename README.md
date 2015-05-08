@@ -148,6 +148,22 @@ If you provide a logout function in your app, be sure to clear the user when the
 **Warning** this call will clear the referral credits and attribution on the device.  
 `branch.logout();`
 
+Close Session
+-------------
+On Android only, clear the deep link parameters when the app is closed, so they can be refreshed after a new link is clicked or the app is reopened. This is automatically done, by the ANE. However if the app is reopened (and if it wasn't destroyed), it won't call automatically the init session since you have to manuall call the activity. You can do it on AS3 side:
+```as3
+if (Capabilities.version.substr(0, 3) == "AND")
+	stage.addEventListener(Event.DEACTIVATE, _leavingTheApp);
+	
+private function _leavingTheApp(evt:Event):void {
+	stage.addEventListener(Event.ACTIVATE, _comingBackToTheApp);
+}
+
+private function _comingBackToTheApp(evt:Event):void {
+	_branch.init();
+}
+```
+
 Generate Tracked
 ================
 
