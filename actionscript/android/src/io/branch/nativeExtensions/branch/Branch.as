@@ -1,5 +1,6 @@
 package io.branch.nativeExtensions.branch {
 
+	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.StatusEvent;
 	import flash.external.ExtensionContext;
@@ -36,6 +37,9 @@ package io.branch.nativeExtensions.branch {
 		private function _onStatus(sEvt:StatusEvent):void {
 
 			dispatchEvent(new BranchEvent(sEvt.code, sEvt.level));
+
+			if (sEvt.code == BranchEvent.INIT_SUCCESSED)
+				addEventListener(Event.DEACTIVATE, _deactivated);
 		}
 
 		public function init():void {
@@ -56,6 +60,8 @@ package io.branch.nativeExtensions.branch {
 		public function logout():void {
 			
 			extensionContext.call("logout");
+
+			removeEventListener(Event.DEACTIVATE, _deactivated);
 		}
 
 		public function getLatestReferringParams():String {
@@ -66,6 +72,20 @@ package io.branch.nativeExtensions.branch {
 		public function getFirstReferringParams():String {
 
 			return extensionContext.call("getFirstReferringParams") as String;
+		}
+
+		private function _deactivated(evt:Event):void {
+			removeEventListener(Event.DEACTIVATE, _deactivated);
+
+			extensionContext.call("closeSession");
+
+			addEventListener(Event.ACTIVATE, _activated);
+		}
+
+		private function _activated(evt:Event):void {
+			removeEventListener(Event.ACTIVATE, _activated);
+
+			init();
 		}
 	}
 }

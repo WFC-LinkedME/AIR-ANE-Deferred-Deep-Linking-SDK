@@ -3,7 +3,7 @@
   <id>io.branch.BranchTest</id>
   <filename>Branch-ANE</filename>
   <name>Branch Test</name>
-  <versionNumber>1.0.0</versionNumber>
+  <versionNumber>1.0.1</versionNumber>
   <initialWindow>
     <content>Branch-AIR-ANE-SDK.swf</content>
     <aspectRatio>portrait</aspectRatio>

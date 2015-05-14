@@ -8,17 +8,14 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.view.WindowManager;
 
 public class BranchActivity extends Activity {
 	
-	Branch branch;
+	static public Branch branch;
 	
 	@Override
 	protected void onStart() {
 		super.onStart();
-		
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 		
 		branch = Branch.getInstance(getApplicationContext());
 		
@@ -36,15 +33,10 @@ public class BranchActivity extends Activity {
 					BranchExtension.context.dispatchStatusEventAsync("INIT_FAILED", error.getMessage());
 				}
 				
+				finish();
+				
 			}
 		}, getIntent().getData(), this);
-	}
-	
-	@Override
-	protected void onStop() {
-		super.onStop();
-		
-		branch.closeSession();
 	}
 	
 	@Override

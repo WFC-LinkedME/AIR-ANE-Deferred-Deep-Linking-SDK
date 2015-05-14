@@ -1,7 +1,7 @@
 package io.branch.nativeExtensions.branch.functions;
 
+import io.branch.nativeExtensions.branch.BranchActivity;
 import io.branch.nativeExtensions.branch.BranchExtension;
-import io.branch.referral.Branch;
 import io.branch.referral.Branch.BranchReferralInitListener;
 import io.branch.referral.BranchError;
 
@@ -18,7 +18,7 @@ public class SetIdentityFunction extends BaseFunction {
 		
 		String userId = getStringFromFREObject(args[0]);
 		
-		Branch.getInstance(BranchExtension.context.getActivity().getApplicationContext()).setIdentity(userId, new BranchReferralInitListener() {
+		BranchActivity.branch.setIdentity(userId, new BranchReferralInitListener() {
 			
 			@Override
 			public void onInitFinished(JSONObject referringParams, BranchError error) {

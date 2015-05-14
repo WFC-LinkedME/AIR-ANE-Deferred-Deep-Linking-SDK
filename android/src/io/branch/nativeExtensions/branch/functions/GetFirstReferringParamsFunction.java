@@ -1,7 +1,6 @@
 package io.branch.nativeExtensions.branch.functions;
 
-import io.branch.nativeExtensions.branch.BranchExtension;
-import io.branch.referral.Branch;
+import io.branch.nativeExtensions.branch.BranchActivity;
 
 import org.json.JSONObject;
 
@@ -15,7 +14,7 @@ public class GetFirstReferringParamsFunction extends BaseFunction {
 	public FREObject call(FREContext context, FREObject[] args) {
 		super.call(context, args);
 		
-		JSONObject installParams = Branch.getInstance(BranchExtension.context.getActivity().getApplicationContext()).getFirstReferringParams();
+		JSONObject installParams = BranchActivity.branch.getFirstReferringParams();
 		
 		try {
 			

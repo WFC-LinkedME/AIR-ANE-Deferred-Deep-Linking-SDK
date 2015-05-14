@@ -1,7 +1,7 @@
 package io.branch.nativeExtensions.branch.functions;
 
+import io.branch.nativeExtensions.branch.BranchActivity;
 import io.branch.nativeExtensions.branch.BranchExtension;
-import io.branch.referral.Branch;
 import io.branch.referral.Branch.BranchLinkCreateListener;
 import io.branch.referral.BranchError;
 
@@ -30,7 +30,7 @@ public class GetShortUrlFunction extends BaseFunction {
 			
 			JSONObject obj = new JSONObject(json);
 			
-			Branch.getInstance(BranchExtension.context.getActivity().getApplicationContext()).getShortUrl(tags, channel, feature, stage, obj, new BranchLinkCreateListener() {
+			BranchActivity.branch.getShortUrl(tags, channel, feature, stage, obj, new BranchLinkCreateListener() {
 				
 				@Override
 				public void onLinkCreate(String url, BranchError error) {

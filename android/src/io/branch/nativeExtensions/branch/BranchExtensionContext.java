@@ -1,5 +1,6 @@
 package io.branch.nativeExtensions.branch;
 
+import io.branch.nativeExtensions.branch.functions.CloseSessionFunction;
 import io.branch.nativeExtensions.branch.functions.GetFirstReferringParamsFunction;
 import io.branch.nativeExtensions.branch.functions.GetLatestReferringParamsFunction;
 import io.branch.nativeExtensions.branch.functions.GetShortUrlFunction;
@@ -32,6 +33,7 @@ public class BranchExtensionContext extends FREContext {
 		functionMap.put("logout", new LogoutFunction());
 		functionMap.put("getLatestReferringParams", new GetLatestReferringParamsFunction());
 		functionMap.put("getFirstReferringParams", new GetFirstReferringParamsFunction());
+		functionMap.put("closeSession", new CloseSessionFunction());
 		
 		return functionMap;
 	}

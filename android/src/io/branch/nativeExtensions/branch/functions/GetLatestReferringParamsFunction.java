@@ -1,7 +1,6 @@
 package io.branch.nativeExtensions.branch.functions;
 
-import io.branch.nativeExtensions.branch.BranchExtension;
-import io.branch.referral.Branch;
+import io.branch.nativeExtensions.branch.BranchActivity;
 
 import org.json.JSONObject;
 
@@ -15,7 +14,7 @@ public class GetLatestReferringParamsFunction extends BaseFunction {
 	public FREObject call(FREContext context, FREObject[] args) {
 		super.call(context, args);
 		
-		JSONObject sessionsParams = Branch.getInstance(BranchExtension.context.getActivity().getApplicationContext()).getLatestReferringParams();
+		JSONObject sessionsParams = BranchActivity.branch.getLatestReferringParams();
 		
 		try {
 			
