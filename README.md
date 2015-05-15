@@ -69,7 +69,7 @@ On iOS:
 ```
 On Android:
 ```xml
-<activity android:excludeFromRecents="false">
+<activity>
 	<intent-filter>
 		<data android:scheme="yourApp" />
         <action android:name="android.intent.action.VIEW" />
