@@ -39,9 +39,9 @@
   <android>
     <manifestAdditions><![CDATA[<manifest android:installLocation="auto">
 							<uses-permission android:name="android.permission.INTERNET"/>
-							<application android:enabled="true">
+							<application>
 								<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp" />
-								<activity android:excludeFromRecents="false">
+								<activity>
 									<intent-filter>
 										<action android:name="android.intent.action.MAIN"/>
 										<category android:name="android.intent.category.LAUNCHER"/>
