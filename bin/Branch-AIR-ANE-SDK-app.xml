@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application xmlns="http://ns.adobe.com/air/application/17.0">
+<application xmlns="http://ns.adobe.com/air/application/18.0">
   <id>io.branch.BranchTest</id>
   <filename>Branch-ANE</filename>
   <name>Branch Test</name>
-  <versionNumber>1.0.1</versionNumber>
+  <versionNumber>1.1.0</versionNumber>
   <initialWindow>
     <content>Branch-AIR-ANE-SDK.swf</content>
     <aspectRatio>portrait</aspectRatio>
@@ -38,6 +38,7 @@
   </iPhone>
   <android>
     <manifestAdditions><![CDATA[<manifest android:installLocation="auto">
+    						<uses-sdk android:minSdkVersion="8" />
 							<uses-permission android:name="android.permission.INTERNET"/>
 							<application>
 								<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp" />
@@ -47,8 +48,8 @@
 										<category android:name="android.intent.category.LAUNCHER"/>
 									</intent-filter>
 									<intent-filter>
-										<data android:scheme="branch-ane-test" />
 								        <action android:name="android.intent.action.VIEW" />
+								        <data android:scheme="branch-ane-test" />
 								        <category android:name="android.intent.category.DEFAULT" />
 								        <category android:name="android.intent.category.BROWSABLE" />
 								    </intent-filter>

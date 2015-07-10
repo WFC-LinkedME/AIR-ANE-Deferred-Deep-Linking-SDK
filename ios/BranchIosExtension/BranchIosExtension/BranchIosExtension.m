@@ -10,7 +10,6 @@
 #import <objc/runtime.h>
 
 #import "FlashRuntimeExtensions.h"
-#import "Branch-SDK/Branch.h"
 
 #import "TypeConversion.h"
 #import "BranchHelpers.h"

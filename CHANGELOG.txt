@@ -1,3 +1,7 @@
+v1.1.0 WORK IN PROGRESS
+- iOS SDK v0.10.0
+- Android SDK v1.6.1
+
 v1.0.1
 - the Branch activity is finished once the init function is called.
 - iOS SDK v0.6.3

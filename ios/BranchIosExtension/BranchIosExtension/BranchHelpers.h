@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "FlashRuntimeExtensions.h"
-#import "Branch-SDK/Branch.h"
+#import <Branch/Branch.h>
 
 @interface BranchHelpers : NSObject {
     

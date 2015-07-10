@@ -16,6 +16,10 @@
 		</exec>
 
 		<copy file="../temp/ios/build/Release-iphoneos/lib${name}IosExtension.a" todir="../temp/ios" overwrite="true" />
+		
+		<copy todir="../temp/Branch.framework" overwrite="true">
+			<fileset dir="../ios/${name}IosExtension/Branch.framework" />
+		</copy>
 
 		<delete dir="../temp/ios/build/" />
 	</target>
@@ -28,8 +32,13 @@
 			<classpath>
 				<pathelement location="${android.sdk}/android.jar" />
 				<pathelement location="../android/libs/FlashRuntimeExtensions.jar" />
+				<pathelement location="../android/libs/Branch-1.6.1.jar" />
 			</classpath>
 		</javac>
+		
+		<mkdir dir="../android/temp/zip" />
+		<unzip src="../android/libs/Branch-1.6.1.jar" dest="../android/temp/zip"/>
+		<copydir src="../android/temp/zip/io" dest="../android/temp/classes/io"/>
 
 		<mkdir dir="../temp/android/" />
 		<jar basedir="../android/temp/classes" destfile="../temp/android/${name}AndroidExtension.jar" />
@@ -128,7 +137,7 @@
 			<arg value="${name}.ane" />
 			<arg value="../build/extension.xml" />
 			<arg line="-swc swc/${name}.swc" />
-			<arg line="-platform iPhone-ARM -platformoptions ../build/platform-ios.xml -C ios/ ." />
+			<arg line="-platform iPhone-ARM -platformoptions ../build/platform-ios.xml Branch.framework -C ios/ ." />
 			<arg line="-platform Android-ARM -C android/ ." />
 			<arg line="-platform Android-x86 -C android/ ." />
 			<arg line="-platform default -C default/ ." />
