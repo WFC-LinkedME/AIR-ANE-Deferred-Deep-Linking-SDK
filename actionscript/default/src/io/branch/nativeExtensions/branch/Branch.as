@@ -32,8 +32,9 @@ package io.branch.nativeExtensions.branch {
 		/**
 		* Init the Branch SDK. For iOS and Android, the key must be set in the *-app.xml Please refer to the README.md and the example.
 		* You'll get the deep linked params associated with the link that the user clicked before showing up via the <code>BranchEvent.INIT_SUCCESSED</code> event.
+		* @param useTestKey Set it to true to use the key test.
 		*/
-		public function init():void {
+		public function init(useTestKey:Boolean = false):void {
 
 		}
 

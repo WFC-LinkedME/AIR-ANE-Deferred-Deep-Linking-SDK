@@ -38,9 +38,11 @@ public class BranchExtensionContext extends FREContext {
 		return functionMap;
 	}
 	
-	public void initActivity() {
+	public void initActivity(Boolean useTestKey) {
 		
 		Intent i = new Intent(getActivity().getApplicationContext(), BranchActivity.class);
+		
+		i.putExtra(BranchActivity.extraPrefix + ".useTestKey", useTestKey);
 		
 		getActivity().startActivity(i);
 	}

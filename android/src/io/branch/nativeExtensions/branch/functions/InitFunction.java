@@ -11,7 +11,9 @@ public class InitFunction extends BaseFunction {
 	public FREObject call(FREContext context, FREObject[] args) {
 		super.call(context, args);
 		
-		BranchExtension.context.initActivity();
+		Boolean useTestKey = getBooleanFromFREObject(args[0]);
+		
+		BranchExtension.context.initActivity(useTestKey);
 		
 		return null;
 	}

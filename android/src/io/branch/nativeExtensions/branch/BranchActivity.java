@@ -8,8 +8,11 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 
 public class BranchActivity extends Activity {
+	
+	static public String extraPrefix = "io.branch.nativeExtensions.branch.BranchActivity";
 	
 	static public Branch branch;
 	
@@ -17,7 +20,10 @@ public class BranchActivity extends Activity {
 	protected void onStart() {
 		super.onStart();
 		
-		branch = Branch.getInstance(getApplicationContext());
+		Bundle extras = this.getIntent().getExtras();
+		Boolean useTestKey = extras.getBoolean(extraPrefix + ".useTestKey");
+		
+		branch = useTestKey ? Branch.getTestInstance(getApplicationContext()) : Branch.getInstance(getApplicationContext());
 		
 		branch.initSession(new BranchReferralInitListener() {
 			

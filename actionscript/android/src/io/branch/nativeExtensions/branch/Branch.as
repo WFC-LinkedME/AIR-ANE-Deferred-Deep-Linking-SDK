@@ -42,9 +42,9 @@ package io.branch.nativeExtensions.branch {
 				addEventListener(Event.DEACTIVATE, _deactivated);
 		}
 
-		public function init():void {
+		public function init(useTestKey:Boolean = false):void {
 
-			extensionContext.call("init");
+			extensionContext.call("init", useTestKey);
 		}
 
 		public function setIdentity(userId:String):void {

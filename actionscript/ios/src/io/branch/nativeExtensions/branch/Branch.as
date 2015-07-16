@@ -38,9 +38,9 @@ package io.branch.nativeExtensions.branch {
 			dispatchEvent(new BranchEvent(sEvt.code, sEvt.level));
 		}
 
-		public function init():void {
+		public function init(useTestKey:Boolean = false):void {
 
-			extensionContext.call("init");
+			extensionContext.call("init", useTestKey);
 		}
 
 		public function setIdentity(userId:String):void {

@@ -19,9 +19,9 @@
     return self;
 }
 
-- (void) initBranch {
+- (void) initBranch:(BOOL) useTestKey {
     
-    Branch *branch = [Branch getInstance];
+    branch = useTestKey ? [Branch getTestInstance] : [Branch getInstance];
     
     [branch initSessionAndRegisterDeepLinkHandler:^(NSDictionary *params, NSError *error) {
         
@@ -40,7 +40,7 @@
 
 - (void) setIdentity:(NSString *) userId {
     
-    [[Branch getInstance] setIdentity:userId withCallback:^(NSDictionary *params, NSError *error) {
+    [branch setIdentity:userId withCallback:^(NSDictionary *params, NSError *error) {
         
         if (!error) {
             
@@ -63,7 +63,7 @@
     if (jsonError)
         [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:jsonError.description];
     
-    [[Branch getInstance] getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andCallback:^(NSString *url, NSError *error) {
+    [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andCallback:^(NSString *url, NSError *error) {
         
         if (!error) {
             
@@ -78,17 +78,17 @@
 
 - (void) logout {
     
-    [[Branch getInstance] logout];
+    [branch logout];
 }
 
 - (NSDictionary *) getLatestReferringParams {
     
-    return [[Branch getInstance] getLatestReferringParams];
+    return [branch getLatestReferringParams];
 }
 
 - (NSDictionary *) getFirstReferringParams {
     
-    return [[Branch getInstance] getFirstReferringParams];
+    return [branch getFirstReferringParams];
 }
 
 - (void) dispatchEvent:(NSString *) event withParams:(NSString * ) params {

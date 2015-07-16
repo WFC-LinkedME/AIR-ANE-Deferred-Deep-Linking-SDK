@@ -14,11 +14,12 @@
 @interface BranchHelpers : NSObject {
     
     FREContext ctx;
+    Branch *branch;
 }
 
 - (id) initWithContext:(FREContext) context;
 
-- (void) initBranch;
+- (void) initBranch:(BOOL) useTestKey;
 - (void) setIdentity:(NSString *) userId;
 - (void) getShortURL:(NSString *) json andTags:(NSArray *) tags andChannel:(NSString *) channel andFeature:(NSString *) feature andStage:(NSString *) stage;
 - (void) logout;

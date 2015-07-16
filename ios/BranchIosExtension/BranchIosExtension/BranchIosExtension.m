@@ -23,7 +23,10 @@ BranchHelpers* branchHelpers;
 
 DEFINE_ANE_FUNCTION(init) {
     
-    [branchHelpers initBranch];
+    uint32_t useTestKey;
+    FREGetObjectAsBool(argv[0], &useTestKey);
+    
+    [branchHelpers initBranch:useTestKey];
     
     return NULL;
 }

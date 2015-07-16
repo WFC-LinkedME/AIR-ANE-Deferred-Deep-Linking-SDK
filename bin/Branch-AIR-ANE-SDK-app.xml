@@ -33,15 +33,21 @@
 		                		 </dict>
 		                	</array>
 			                <key>branch_key</key>
-							<string>key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp</string>]]></InfoAdditions>
+			                <dict>
+			                	<key>live</key>
+								<string>key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp</string>
+								<key>test</key>
+								<string>key_test_okaqTPsqXpKE0Jib8MDZlalhtuhLjsJO</string>
+							</dict>]]></InfoAdditions>
     <requestedDisplayResolution>high</requestedDisplayResolution>
   </iPhone>
   <android>
     <manifestAdditions><![CDATA[<manifest android:installLocation="auto">
-    						<uses-sdk android:minSdkVersion="8" />
+    						<uses-sdk android:minSdkVersion="14" />
 							<uses-permission android:name="android.permission.INTERNET"/>
 							<application>
 								<meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_dcixJiAqOixZkdkLxgiTLkeovycqdUPp" />
+								<meta-data android:name="io.branch.sdk.BranchKey.test" android:value="key_test_okaqTPsqXpKE0Jib8MDZlalhtuhLjsJO" />
 								<activity>
 									<intent-filter>
 										<action android:name="android.intent.action.MAIN"/>
