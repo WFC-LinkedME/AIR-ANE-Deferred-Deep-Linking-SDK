@@ -1,6 +1,8 @@
 v1.1.0 WORK IN PROGRESS
 - iOS SDK v0.10.0
 - Android SDK v1.6.1
+- init method accept a bool param to use live or test branch.
+- added alias and type to the getShortUrl function.
 
 v1.0.1
 - the Branch activity is finished once the init function is called.

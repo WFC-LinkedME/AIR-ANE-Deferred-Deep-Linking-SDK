@@ -53,7 +53,7 @@
     }];
 }
 
-- (void) getShortURL:(NSString *) json andTags:(NSArray *) tags andChannel:(NSString *) channel andFeature:(NSString *) feature andStage:(NSString *) stage {
+- (void) getShortURL:(NSString *) json andTags:(NSArray *) tags andChannel:(NSString *) channel andFeature:(NSString *) feature andStage:(NSString *) stage andAlias:(NSString *) alias andType:(int) type {
     
     NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
     NSError *jsonError;
@@ -63,17 +63,36 @@
     if (jsonError)
         [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:jsonError.description];
     
-    [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andCallback:^(NSString *url, NSError *error) {
+    //find a way to have the same callback for everyone...
+    
+    if (alias.length != 0)
+        [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andAlias:alias andCallback:^(NSString *url, NSError *error) {
+            
+            if (!error)
+                [self dispatchEvent:@"GET_SHORT_URL_SUCCESSED" withParams:url];
+                
+            else
+                [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:error.description];
+        }];
+    
+    else if (type != -1)
+        [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andType:type andCallback:^(NSString *url, NSError *error) {
+            
+            if (!error)
+                [self dispatchEvent:@"GET_SHORT_URL_SUCCESSED" withParams:url];
+            
+            else
+                [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:error.description];
+        }];
+    else
+        [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andCallback:^(NSString *url, NSError *error) {
         
-        if (!error) {
+            if (!error)
+                [self dispatchEvent:@"GET_SHORT_URL_SUCCESSED" withParams:url];
             
-            [self dispatchEvent:@"GET_SHORT_URL_SUCCESSED" withParams:url];
-            
-        } else {
-            
-            [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:error.description];
-        }
-    }];
+            else
+                [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:error.description];
+        }];
 }
 
 - (void) logout {

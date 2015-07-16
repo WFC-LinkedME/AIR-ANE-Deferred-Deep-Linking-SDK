@@ -48,9 +48,9 @@ package io.branch.nativeExtensions.branch {
 			extensionContext.call("setIdentity", userId);
 		}
 
-		public function getShortUrl(tags:Array = null, channel:String = "", feature:String = "", stage:String = "", json:String = "{}"):void {
+		public function getShortUrl(tags:Array = null, channel:String = "", feature:String = "", stage:String = "", json:String = "{}", alias:String = "", type:int = -1):void {
 
-			extensionContext.call("getShortUrl", tags, channel, feature, stage, json);
+			extensionContext.call("getShortUrl", tags, channel, feature, stage, json, alias, type);
 		}
 
 		public function logout():void {

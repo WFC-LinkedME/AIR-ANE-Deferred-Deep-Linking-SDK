@@ -25,27 +25,35 @@ public class GetShortUrlFunction extends BaseFunction {
 		String feature = getStringFromFREObject(args[2]);
 		String stage = getStringFromFREObject(args[3]);
 		String json = getStringFromFREObject(args[4]);
+		String alias = getStringFromFREObject(args[5]);
+		int type = getIntFromFREObject(args[6]);
 		
 		try {
 			
 			JSONObject obj = new JSONObject(json);
 			
-			BranchActivity.branch.getShortUrl(tags, channel, feature, stage, obj, new BranchLinkCreateListener() {
+			BranchLinkCreateListener callback = new BranchLinkCreateListener() {
 				
 				@Override
 				public void onLinkCreate(String url, BranchError error) {
 					
-					if (error == null) {
-						
+					if (error == null)
 						BranchExtension.context.dispatchStatusEventAsync("GET_SHORT_URL_SUCCESSED", url);
 						
-					} else {
-						
+					else
 						BranchExtension.context.dispatchStatusEventAsync("GET_SHORT_URL_FAILED", error.getMessage());
-					}
 					
 				}
-			});
+			};
+			
+			if (alias.length() != 0)
+				BranchActivity.branch.getShortUrl(alias, tags, channel, feature, stage, obj, callback);
+			
+			else if (type != -1)
+				BranchActivity.branch.getShortUrl(type, tags, channel, feature, stage, obj, callback);
+			
+			else
+				BranchActivity.branch.getShortUrl(tags, channel, feature, stage, obj, callback);
 			
 		} catch (JSONException t) {
 			

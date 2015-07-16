@@ -58,7 +58,13 @@ DEFINE_ANE_FUNCTION(getShortUrl) {
     NSString* json;
     [typeConverter FREGetObject:argv[4] asString:&json];
     
-    [branchHelpers getShortURL:json andTags:[tags allObjects] andChannel:channel andFeature:feature andStage:stage];
+    NSString* alias;
+    [typeConverter FREGetObject:argv[5] asString:&alias];
+    
+    int32_t type;
+    FREGetObjectAsInt32(argv[6], &type);
+    
+    [branchHelpers getShortURL:json andTags:[tags allObjects] andChannel:channel andFeature:feature andStage:stage andAlias:alias andType:type];
     
     return NULL;
 }

@@ -44,6 +44,17 @@ public class BaseFunction implements FREFunction {
 		}
 	}
 	
+	protected int getIntFromFREObject(FREObject object) {
+		
+		try {
+			return object.getAsInt();
+
+		} catch(Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
 	protected List<String> getListOfStringFromFREArray(FREArray array) {
 
 		List<String> result = new ArrayList<String>();

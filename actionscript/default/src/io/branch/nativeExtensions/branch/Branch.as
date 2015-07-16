@@ -56,8 +56,10 @@ package io.branch.nativeExtensions.branch {
 		* @param feature examples: Branch.FEATURE_TAG_SHARE, Branch.FEATURE_TAG_REFERRAL, "unlock", etc; should not exceed 128 characters
 		* @param stage examples: "past_customer", "logged_in", "level_6"; should not exceed 128 characters
 		* @param json a stringify JSON, you can access this data from any instance that installs or opens the app from this link, customize the display of the Branch link and customize the desktop redirect location
+		* @param alias the alias for a link.
+		* @param type can be used for scenarios where you want the link to only deep link the first time.
 		*/
-		public function getShortUrl(tags:Array = null, channel:String = "", feature:String = "", stage:String = "", json:String = "{}"):void {
+		public function getShortUrl(tags:Array = null, channel:String = "", feature:String = "", stage:String = "", json:String = "{}", alias:String = "", type:int = -1):void {
 
 		}
 
