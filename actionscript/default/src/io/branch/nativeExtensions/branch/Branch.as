@@ -110,5 +110,14 @@ package io.branch.nativeExtensions.branch {
 		public function redeemRewards(credits:int, bucket:String = ""):void {
 
 		}
+
+		/**
+		* This call will retrieve the entire history of credits and redemptions from the individual user.
+		* Be sure to listen <code>GET_CREDITS_HISTORY_SUCCESSED</code> and <code>GET_CREDITS_HISTORY_FAILED</code> events.
+		* @param bucket The bucket to get credits balance from.
+		*/
+		public function getCreditsHistory(bucket:String = ""):void {
+
+		}
 	}
 }

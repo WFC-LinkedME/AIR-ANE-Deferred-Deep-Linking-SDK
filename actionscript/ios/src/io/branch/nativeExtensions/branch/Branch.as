@@ -77,5 +77,10 @@ package io.branch.nativeExtensions.branch {
 
 			extensionContext.call("redeemRewards", credits, bucket);
 		}
+
+		public function getCreditsHistory(bucket:String = ""):void {
+
+			extensionContext.call("getCreditsHistory", bucket);
+		}
 	}
 }

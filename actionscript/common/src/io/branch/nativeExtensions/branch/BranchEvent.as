@@ -54,6 +54,16 @@ package io.branch.nativeExtensions.branch {
 		*/
 		static public const REDEEM_REWARDS_FAILED:String = "REDEEM_REWARDS_FAILED";
 
+		/**
+		* Dispatched when the <code>getCreditsHistory</code> method is called and successed. See event's <code>informations</code> for details.
+		*/
+		static public const GET_CREDITS_HISTORY_SUCCESSED:String = "GET_CREDITS_HISTORY_SUCCESSED";
+
+		/**
+		* Dispatched when the <code>getCreditsHistory</code> has failed. See event's <code>informations</code> for details.
+		*/
+		static public const GET_CREDITS_HISTORY_FAILED:String = "GET_CREDITS_HISTORY_FAILED";
+
 		private var _informations:String;
 
 		public function BranchEvent(type:String, informations:String, bubbles:Boolean = false, cancelable:Boolean = false) {
@@ -66,6 +76,7 @@ package io.branch.nativeExtensions.branch {
 		/**
 		* <code>informations</code> contains the error from the base SDK or the the result expected like for <code>getShortUrl</code>.
 		* It can also contains credits, think to turn them into <code>int</code>!
+		* And also the credits history as a stringified array!
 		*/
 		public function get informations():String {
 

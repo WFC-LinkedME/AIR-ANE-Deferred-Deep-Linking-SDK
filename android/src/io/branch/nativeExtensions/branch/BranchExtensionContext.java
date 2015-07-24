@@ -2,6 +2,7 @@ package io.branch.nativeExtensions.branch;
 
 import io.branch.nativeExtensions.branch.functions.CloseSessionFunction;
 import io.branch.nativeExtensions.branch.functions.GetCreditsFunction;
+import io.branch.nativeExtensions.branch.functions.GetCreditsHistoryFunction;
 import io.branch.nativeExtensions.branch.functions.GetFirstReferringParamsFunction;
 import io.branch.nativeExtensions.branch.functions.GetLatestReferringParamsFunction;
 import io.branch.nativeExtensions.branch.functions.GetShortUrlFunction;
@@ -37,6 +38,7 @@ public class BranchExtensionContext extends FREContext {
 		functionMap.put("getFirstReferringParams", new GetFirstReferringParamsFunction());
 		functionMap.put("getCredits", new GetCreditsFunction());
 		functionMap.put("redeemRewards", new RedeemRewardsFunction());
+		functionMap.put("getCreditsHistory", new GetCreditsHistoryFunction());
 		functionMap.put("closeSession", new CloseSessionFunction());
 		
 		return functionMap;

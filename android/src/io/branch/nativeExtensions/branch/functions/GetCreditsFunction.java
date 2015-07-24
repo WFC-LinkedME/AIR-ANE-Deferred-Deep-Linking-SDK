@@ -25,10 +25,10 @@ public class GetCreditsFunction extends BaseFunction implements FREFunction {
 			public void onStateChanged(boolean changed, BranchError error) {
 				
 				if (error == null)
-					BranchExtension.context.dispatchStatusEventAsync("GET_SHORT_URL_SUCCESSED", String.valueOf(BranchActivity.branch.getCreditsForBucket(_bucket)));
+					BranchExtension.context.dispatchStatusEventAsync("GET_CREDITS_SUCCESSED", String.valueOf(BranchActivity.branch.getCreditsForBucket(_bucket)));
 					
 				else
-					BranchExtension.context.dispatchStatusEventAsync("GET_SHORT_URL_FAILED", error.getMessage());
+					BranchExtension.context.dispatchStatusEventAsync("GET_CREDITS_FAILED", error.getMessage());
 			}
 		});
 		

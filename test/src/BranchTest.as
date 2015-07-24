@@ -32,6 +32,9 @@ package {
 			_branch.addEventListener(BranchEvent.REDEEM_REWARDS_FAILED, _redeemRewardsFailed);
 			_branch.addEventListener(BranchEvent.REDEEM_REWARDS_SUCCESSED, _redeemRewardsSuccessed);
 
+			_branch.addEventListener(BranchEvent.GET_CREDITS_HISTORY_FAILED, _getCreditsHistoryFailed);
+			_branch.addEventListener(BranchEvent.GET_CREDITS_HISTORY_SUCCESSED, _getCreditsHistorySuccessed);
+
 			_branch.init();
 		}
 
@@ -63,7 +66,7 @@ package {
 			
 			_branch.getCredits();
 			
-			_branch.redeemRewards(5);
+			_branch.getCreditsHistory();
 			
 			var sessionParams:String = _branch.getLatestReferringParams();
 			trace("sessionParams: " + sessionParams);
@@ -82,10 +85,16 @@ package {
 		
 		private function _getCreditsSuccessed(bEvt:BranchEvent):void {
 			trace("BranchEvent.GET_CREDITS_SUCCESSED", bEvt.informations);
+			
+			_branch.redeemRewards(5);
 		}
 		
 		private function _redeemRewardsSuccessed(bEvt:BranchEvent):void {
 			trace("BranchEvent.REDEEM_REWARDS_FAILED", bEvt.informations);
+		}
+		
+		private function _getCreditsHistorySuccessed(bEvt:BranchEvent):void {
+			trace("BranchEvent.GET_CREDITS_HISTORY_SUCCESSED", bEvt.informations);
 		}
 		
 		private function _initFailed(bEvt:BranchEvent):void {
@@ -106,6 +115,10 @@ package {
 		
 		private function _redeemRewardsFailed(bEvt:BranchEvent):void {
 			trace("BranchEvent.REDEEM_REWARDS_FAILED", bEvt.informations);
+		}
+		
+		private function _getCreditsHistoryFailed(bEvt:BranchEvent):void {
+			trace("BranchEvent.GET_CREDITS_HISTORY_FAILED", bEvt.informations);
 		}
 	}
 }

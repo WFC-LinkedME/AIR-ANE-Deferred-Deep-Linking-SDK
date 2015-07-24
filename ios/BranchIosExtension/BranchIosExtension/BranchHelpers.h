@@ -28,6 +28,7 @@
 - (NSDictionary *) getFirstReferringParams;
 - (void) getCredits:(NSString *) bucket;
 - (void) redeemRewards:(NSInteger) credits andBucket:(NSString *) bucket;
+- (void) getCreditsHistory:(NSString *) bucket;
 
 - (void) dispatchEvent:(NSString *) event withParams:(NSString * ) params;
 

@@ -121,6 +121,16 @@ DEFINE_ANE_FUNCTION(redeemRewards) {
     return NULL;
 }
 
+DEFINE_ANE_FUNCTION(getCreditsHistory) {
+    
+    NSString* bucket;
+    [typeConverter FREGetObject:argv[0] asString:&bucket];
+    
+    [branchHelpers getCreditsHistory:bucket];
+    
+    return  NULL;
+}
+
 bool applicationDidFinishLaunchingWithOptions(id self, SEL _cmd, UIApplication* application, NSDictionary* launchOptions) {
     //NSLog(@"applicationDidFinishLaunchingWithOptions");
     
@@ -188,7 +198,8 @@ void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext 
         MAP_FUNCTION(getLatestReferringParams, NULL),
         MAP_FUNCTION(getFirstReferringParams, NULL),
         MAP_FUNCTION(getCredits, NULL),
-        MAP_FUNCTION(redeemRewards, NULL)
+        MAP_FUNCTION(redeemRewards, NULL),
+        MAP_FUNCTION(getCreditsHistory, NULL)
     };
     
     *numFunctionsToSet = sizeof( functionMap ) / sizeof( FRENamedFunction );

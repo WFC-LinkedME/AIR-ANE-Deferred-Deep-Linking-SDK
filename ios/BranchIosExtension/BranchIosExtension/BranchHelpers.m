@@ -125,11 +125,24 @@
 - (void) redeemRewards:(NSInteger) credits andBucket:(NSString *) bucket {
     
     [branch redeemRewards:credits forBucket:bucket callback:^(BOOL changed, NSError *error) {
+        
         if (!error)
             [self dispatchEvent:@"REDEEM_REWARDS_SUCCESSED" withParams:@""];
         
         else
             [self dispatchEvent:@"REDEEM_REWARDS_FAILED" withParams:error.description];
+    }];
+}
+
+- (void) getCreditsHistory:(NSString *) bucket {
+    
+    [branch getCreditHistoryForBucket:bucket andCallback:^(NSArray *list, NSError *error) {
+        
+        if (!error)
+            [self dispatchEvent:@"GET_CREDITS_HISTORY_SUCCESSED" withParams:[[list valueForKey:@"description"] componentsJoinedByString:@""]];
+        
+        else
+            [self dispatchEvent:@"GET_CREDITS_HISTORY_FAILED" withParams:error.description];
     }];
 }
 

@@ -5,6 +5,7 @@ v1.1.0 WORK IN PROGRESS
 - added alias and type to the getShortUrl function.
 - added getCredits method.
 - added redeemRewards method.
+- added getCreditsHistory method.
 
 v1.0.1
 - the Branch activity is finished once the init function is called.
