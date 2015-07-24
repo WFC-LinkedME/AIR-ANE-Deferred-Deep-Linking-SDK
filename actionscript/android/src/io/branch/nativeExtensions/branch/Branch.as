@@ -74,14 +74,14 @@ package io.branch.nativeExtensions.branch {
 			return extensionContext.call("getFirstReferringParams") as String;
 		}
 
-		public function getCredits():void {
+		public function getCredits(bucket:String = ""):void {
 			
-			extensionContext.call("getCredits");
+			extensionContext.call("getCredits", bucket);
 		}
 
-		public function redeemRewards(credits:int):void {
+		public function redeemRewards(credits:int, bucket:String = ""):void {
 
-			extensionContext.call("redeemRewards", credits);
+			extensionContext.call("redeemRewards", credits, bucket);
 		}
 
 		private function _deactivated(evt:Event):void {

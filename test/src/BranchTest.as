@@ -29,6 +29,9 @@ package {
 			_branch.addEventListener(BranchEvent.GET_CREDITS_FAILED, _getCreditsFailed);
 			_branch.addEventListener(BranchEvent.GET_CREDITS_SUCCESSED, _getCreditsSuccessed);
 
+			_branch.addEventListener(BranchEvent.REDEEM_REWARDS_FAILED, _redeemRewardsFailed);
+			_branch.addEventListener(BranchEvent.REDEEM_REWARDS_SUCCESSED, _redeemRewardsSuccessed);
+
 			_branch.init();
 		}
 
@@ -81,6 +84,10 @@ package {
 			trace("BranchEvent.GET_CREDITS_SUCCESSED", bEvt.informations);
 		}
 		
+		private function _redeemRewardsSuccessed(bEvt:BranchEvent):void {
+			trace("BranchEvent.REDEEM_REWARDS_FAILED", bEvt.informations);
+		}
+		
 		private function _initFailed(bEvt:BranchEvent):void {
 			trace("BranchEvent.INIT_FAILED", bEvt.informations);
 		}
@@ -95,6 +102,10 @@ package {
 
 		private function _getCreditsFailed(bEvt:BranchEvent):void {
 			trace("BranchEvent.GET_CREDITS_FAILED", bEvt.informations);
+		}
+		
+		private function _redeemRewardsFailed(bEvt:BranchEvent):void {
+			trace("BranchEvent.REDEEM_REWARDS_FAILED", bEvt.informations);
 		}
 	}
 }

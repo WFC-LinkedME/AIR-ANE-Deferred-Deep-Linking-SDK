@@ -11,9 +11,13 @@ import com.adobe.fre.FREObject;
 
 public class GetCreditsFunction extends BaseFunction implements FREFunction {
 	
+	String _bucket;
+	
 	@Override
 	public FREObject call(FREContext context, FREObject[] args) {
 		super.call(context, args);
+		
+		_bucket = getStringFromFREObject(args[0]);
 		
 		BranchActivity.branch.loadRewards(new BranchReferralStateChangedListener() {
 			
@@ -21,7 +25,7 @@ public class GetCreditsFunction extends BaseFunction implements FREFunction {
 			public void onStateChanged(boolean changed, BranchError error) {
 				
 				if (error == null)
-					BranchExtension.context.dispatchStatusEventAsync("GET_SHORT_URL_SUCCESSED", String.valueOf(BranchActivity.branch.getCredits()));
+					BranchExtension.context.dispatchStatusEventAsync("GET_SHORT_URL_SUCCESSED", String.valueOf(BranchActivity.branch.getCreditsForBucket(_bucket)));
 					
 				else
 					BranchExtension.context.dispatchStatusEventAsync("GET_SHORT_URL_FAILED", error.getMessage());

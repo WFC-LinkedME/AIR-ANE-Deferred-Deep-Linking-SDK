@@ -110,21 +110,27 @@
     return [branch getFirstReferringParams];
 }
 
-- (void) getCredits {
+- (void) getCredits:(NSString *) bucket {
     
     [branch loadRewardsWithCallback:^(BOOL changed, NSError *error) {
         
         if (!error)
-            [self dispatchEvent:@"GET_CREDITS_SUCCESSED" withParams:[NSString stringWithFormat: @"%ld", (long) [branch getCredits]]];
+            [self dispatchEvent:@"GET_CREDITS_SUCCESSED" withParams:[NSString stringWithFormat: @"%ld", (long) [branch getCreditsForBucket:bucket]]];
         
         else
             [self dispatchEvent:@"GET_CREDITS_FAILED" withParams:error.description];
     }];
 }
 
-- (void) redeemRewards:(NSInteger) credits {
+- (void) redeemRewards:(NSInteger) credits andBucket:(NSString *) bucket {
     
-    [branch redeemRewards:credits];
+    [branch redeemRewards:credits forBucket:bucket callback:^(BOOL changed, NSError *error) {
+        if (!error)
+            [self dispatchEvent:@"REDEEM_REWARDS_SUCCESSED" withParams:@""];
+        
+        else
+            [self dispatchEvent:@"REDEEM_REWARDS_FAILED" withParams:error.description];
+    }];
 }
 
 - (void) dispatchEvent:(NSString *) event withParams:(NSString * ) params {

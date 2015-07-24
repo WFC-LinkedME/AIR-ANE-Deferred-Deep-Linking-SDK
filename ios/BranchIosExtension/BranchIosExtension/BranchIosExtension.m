@@ -100,7 +100,10 @@ DEFINE_ANE_FUNCTION(getFirstReferringParams) {
 
 DEFINE_ANE_FUNCTION(getCredits) {
     
-    [branchHelpers getCredits];
+    NSString* bucket;
+    [typeConverter FREGetObject:argv[0] asString:&bucket];
+    
+    [branchHelpers getCredits:bucket];
     
     return NULL;
 }
@@ -110,8 +113,10 @@ DEFINE_ANE_FUNCTION(redeemRewards) {
     int32_t credits;
     FREGetObjectAsInt32(argv[0], &credits);
     
+    NSString* bucket;
+    [typeConverter FREGetObject:argv[1] asString:&bucket];
     
-    [branchHelpers redeemRewards:credits];
+    [branchHelpers redeemRewards:credits andBucket:bucket];
     
     return NULL;
 }
