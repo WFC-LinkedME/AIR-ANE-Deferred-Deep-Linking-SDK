@@ -1,11 +1,13 @@
 package io.branch.nativeExtensions.branch;
 
 import io.branch.nativeExtensions.branch.functions.CloseSessionFunction;
+import io.branch.nativeExtensions.branch.functions.GetCreditsFunction;
 import io.branch.nativeExtensions.branch.functions.GetFirstReferringParamsFunction;
 import io.branch.nativeExtensions.branch.functions.GetLatestReferringParamsFunction;
 import io.branch.nativeExtensions.branch.functions.GetShortUrlFunction;
 import io.branch.nativeExtensions.branch.functions.InitFunction;
 import io.branch.nativeExtensions.branch.functions.LogoutFunction;
+import io.branch.nativeExtensions.branch.functions.RedeemRewardsFunction;
 import io.branch.nativeExtensions.branch.functions.SetIdentityFunction;
 
 import java.util.HashMap;
@@ -33,6 +35,8 @@ public class BranchExtensionContext extends FREContext {
 		functionMap.put("logout", new LogoutFunction());
 		functionMap.put("getLatestReferringParams", new GetLatestReferringParamsFunction());
 		functionMap.put("getFirstReferringParams", new GetFirstReferringParamsFunction());
+		functionMap.put("getCredits", new GetCreditsFunction());
+		functionMap.put("redeemRewards", new RedeemRewardsFunction());
 		functionMap.put("closeSession", new CloseSessionFunction());
 		
 		return functionMap;

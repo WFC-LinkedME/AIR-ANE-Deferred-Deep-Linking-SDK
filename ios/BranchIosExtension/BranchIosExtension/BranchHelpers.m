@@ -110,6 +110,23 @@
     return [branch getFirstReferringParams];
 }
 
+- (void) getCredits {
+    
+    [branch loadRewardsWithCallback:^(BOOL changed, NSError *error) {
+        
+        if (!error)
+            [self dispatchEvent:@"GET_CREDITS_SUCCESSED" withParams:[NSString stringWithFormat: @"%ld", (long) [branch getCredits]]];
+        
+        else
+            [self dispatchEvent:@"GET_CREDITS_FAILED" withParams:error.description];
+    }];
+}
+
+- (void) redeemRewards:(NSInteger) credits {
+    
+    [branch redeemRewards:credits];
+}
+
 - (void) dispatchEvent:(NSString *) event withParams:(NSString * ) params {
     
     const uint8_t* par = (const uint8_t*) [params UTF8String];

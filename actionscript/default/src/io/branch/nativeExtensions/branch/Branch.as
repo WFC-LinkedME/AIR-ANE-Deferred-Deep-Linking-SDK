@@ -91,5 +91,23 @@ package io.branch.nativeExtensions.branch {
 
 			return "";
 		}
+
+		/**
+		* Reward balances change randomly on the backend when certain actions are taken (defined by your rules), so it'll make an asynchronous call to retrieve the balance.
+		* Be sure to listen <code>GET_CREDITS</code> event.
+		*
+		*/
+		public function getCredits():void {
+			
+		}
+
+		/**
+		* We will store how many of the rewards have been deployed so that you don't have to track it on your end. In order to save that you gave the credits to the user, you can call redeem.
+		* Redemptions will reduce the balance of outstanding credits permanently.
+		* @param credits credits given to the user.
+		*/
+		public function redeemRewards(credits:int):void {
+
+		}
 	}
 }

@@ -34,6 +34,16 @@ package io.branch.nativeExtensions.branch {
 		*/
 		static public var GET_SHORT_URL_FAILED:String = "GET_SHORT_URL_FAILED";
 
+		/**
+		* Dispatched when the <code>getCredits</code> method is called and successed. See event's <code>informations</code> for details.
+		*/
+		static public var GET_CREDITS_SUCCESSED:String = "GET_CREDITS_SUCCESSED";
+
+		/**
+		* Dispatched when the <code>getCredits</code> has failed. See event's <code>informations</code> for details.
+		*/
+		static public var GET_CREDITS_FAILED:String = "GET_CREDITS_FAILED";
+
 		private var _informations:String;
 
 		public function BranchEvent(type:String, informations:String, bubbles:Boolean = false, cancelable:Boolean = false) {
@@ -45,6 +55,7 @@ package io.branch.nativeExtensions.branch {
 
 		/**
 		* <code>informations</code> contains the error from the base SDK or the the result expected like for <code>getShortUrl</code>.
+		* It can also contains credits, think to turn them into <code>int</code>!
 		*/
 		public function get informations():String {
 

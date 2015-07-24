@@ -26,6 +26,9 @@ package {
 			_branch.addEventListener(BranchEvent.GET_SHORT_URL_FAILED, _getShortUrlFailed);
 			_branch.addEventListener(BranchEvent.GET_SHORT_URL_SUCCESSED, _getShortUrlSuccessed);
 
+			_branch.addEventListener(BranchEvent.GET_CREDITS_FAILED, _getCreditsFailed);
+			_branch.addEventListener(BranchEvent.GET_CREDITS_SUCCESSED, _getCreditsSuccessed);
+
 			_branch.init();
 		}
 
@@ -55,6 +58,10 @@ package {
 			
 			_branch.getShortUrl(tags, "text_message", BranchConst.FEATURE_TAG_SHARE, "level_3", JSON.stringify(dataToInclude));
 			
+			_branch.getCredits();
+			
+			_branch.redeemRewards(5);
+			
 			var sessionParams:String = _branch.getLatestReferringParams();
 			trace("sessionParams: " + sessionParams);
 			
@@ -70,6 +77,10 @@ package {
 			trace("BranchEvent.GET_SHORT_URL_SUCCESSED", bEvt.informations);
 		}
 		
+		private function _getCreditsSuccessed(bEvt:BranchEvent):void {
+			trace("BranchEvent.GET_CREDITS_SUCCESSED", bEvt.informations);
+		}
+		
 		private function _initFailed(bEvt:BranchEvent):void {
 			trace("BranchEvent.INIT_FAILED", bEvt.informations);
 		}
@@ -80,6 +91,10 @@ package {
 		
 		private function _getShortUrlFailed(bEvt:BranchEvent):void {
 			trace("BranchEvent.GET_SHORT_URL_FAILED", bEvt.informations);
+		}
+
+		private function _getCreditsFailed(bEvt:BranchEvent):void {
+			trace("BranchEvent.GET_CREDITS_FAILED", bEvt.informations);
 		}
 	}
 }
