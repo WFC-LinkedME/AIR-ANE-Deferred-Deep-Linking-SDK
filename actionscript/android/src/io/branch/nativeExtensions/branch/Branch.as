@@ -89,6 +89,16 @@ package io.branch.nativeExtensions.branch {
 			extensionContext.call("getCreditsHistory", bucket);
 		}
 
+		public function getReferralCode():void {
+			
+			extensionContext.call("getReferralCode");
+		}
+
+		public function applyReferralCode(code:String):void {
+
+			extensionContext.call("applyReferralCode", code);
+		}
+
 		private function _deactivated(evt:Event):void {
 			removeEventListener(Event.DEACTIVATE, _deactivated);
 

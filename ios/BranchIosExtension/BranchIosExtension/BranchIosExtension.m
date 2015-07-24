@@ -131,6 +131,23 @@ DEFINE_ANE_FUNCTION(getCreditsHistory) {
     return  NULL;
 }
 
+DEFINE_ANE_FUNCTION(getReferralCode) {
+    
+    [branchHelpers getReferralCode];
+    
+    return NULL;
+}
+
+DEFINE_ANE_FUNCTION(applyReferralCode) {
+    
+    NSString* code;
+    [typeConverter FREGetObject:argv[0] asString:&code];
+    
+    [branchHelpers applyReferralCode:code];
+    
+    return NULL;
+}
+
 bool applicationDidFinishLaunchingWithOptions(id self, SEL _cmd, UIApplication* application, NSDictionary* launchOptions) {
     //NSLog(@"applicationDidFinishLaunchingWithOptions");
     
@@ -199,7 +216,9 @@ void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext 
         MAP_FUNCTION(getFirstReferringParams, NULL),
         MAP_FUNCTION(getCredits, NULL),
         MAP_FUNCTION(redeemRewards, NULL),
-        MAP_FUNCTION(getCreditsHistory, NULL)
+        MAP_FUNCTION(getCreditsHistory, NULL),
+        MAP_FUNCTION(getReferralCode, NULL),
+        MAP_FUNCTION(applyReferralCode, NULL)
     };
     
     *numFunctionsToSet = sizeof( functionMap ) / sizeof( FRENamedFunction );

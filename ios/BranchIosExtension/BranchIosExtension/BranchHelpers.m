@@ -146,6 +146,34 @@
     }];
 }
 
+- (void) getReferralCode {
+    
+    [branch getPromoCodeWithCallback:^(NSDictionary *params, NSError *error) {
+        
+        if (!error)
+            [self dispatchEvent:@"GET_REFERRAL_CODE_SUCCESSED" withParams:[params objectForKey:@"promo_code"]];
+        
+        else
+            [self dispatchEvent:@"GET_REFERRAL_CODE_FAILED" withParams:error.description];
+    }];
+}
+
+- (void) applyReferralCode:(NSString *) code {
+    
+    [branch applyPromoCode:code callback:^(NSDictionary *params, NSError *error) {
+        
+        if (!error) {
+            
+            NSString *JSONString = [TypeConversion ConvertNSDictionaryToJSONString:params];
+            
+            [self dispatchEvent:@"APPLY_REFERRAL_CODE_SUCCESSED" withParams:JSONString];
+            
+        } else
+            [self dispatchEvent:@"APPLY_REFERRAL_CODE_FAILED" withParams:error.description];
+    }];
+    
+}
+
 - (void) dispatchEvent:(NSString *) event withParams:(NSString * ) params {
     
     const uint8_t* par = (const uint8_t*) [params UTF8String];

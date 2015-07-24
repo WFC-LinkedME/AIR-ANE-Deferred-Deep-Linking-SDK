@@ -17,23 +17,29 @@ package {
 			
 			_branch = new Branch();
 
-			_branch.addEventListener(BranchEvent.INIT_FAILED, _initFailed);
+			_branch.addEventListener(BranchEvent.INIT_FAILED, _branchEventCallback);
 			_branch.addEventListener(BranchEvent.INIT_SUCCESSED, _initSuccessed);
 
-			_branch.addEventListener(BranchEvent.SET_IDENTITY_FAILED, _setIdentityFailed);
-			_branch.addEventListener(BranchEvent.SET_IDENTITY_SUCCESSED, _setIdentitySuccessed);
+			_branch.addEventListener(BranchEvent.SET_IDENTITY_FAILED, _branchEventCallback);
+			_branch.addEventListener(BranchEvent.SET_IDENTITY_SUCCESSED, _branchEventCallback);
 
-			_branch.addEventListener(BranchEvent.GET_SHORT_URL_FAILED, _getShortUrlFailed);
-			_branch.addEventListener(BranchEvent.GET_SHORT_URL_SUCCESSED, _getShortUrlSuccessed);
+			_branch.addEventListener(BranchEvent.GET_SHORT_URL_FAILED, _branchEventCallback);
+			_branch.addEventListener(BranchEvent.GET_SHORT_URL_SUCCESSED, _branchEventCallback);
 
-			_branch.addEventListener(BranchEvent.GET_CREDITS_FAILED, _getCreditsFailed);
-			_branch.addEventListener(BranchEvent.GET_CREDITS_SUCCESSED, _getCreditsSuccessed);
+			_branch.addEventListener(BranchEvent.GET_CREDITS_FAILED, _branchEventCallback);
+			_branch.addEventListener(BranchEvent.GET_CREDITS_SUCCESSED, _branchEventCallback);
 
-			_branch.addEventListener(BranchEvent.REDEEM_REWARDS_FAILED, _redeemRewardsFailed);
-			_branch.addEventListener(BranchEvent.REDEEM_REWARDS_SUCCESSED, _redeemRewardsSuccessed);
+			_branch.addEventListener(BranchEvent.REDEEM_REWARDS_FAILED, _branchEventCallback);
+			_branch.addEventListener(BranchEvent.REDEEM_REWARDS_SUCCESSED, _branchEventCallback);
 
-			_branch.addEventListener(BranchEvent.GET_CREDITS_HISTORY_FAILED, _getCreditsHistoryFailed);
-			_branch.addEventListener(BranchEvent.GET_CREDITS_HISTORY_SUCCESSED, _getCreditsHistorySuccessed);
+			_branch.addEventListener(BranchEvent.GET_CREDITS_HISTORY_FAILED, _branchEventCallback);
+			_branch.addEventListener(BranchEvent.GET_CREDITS_HISTORY_SUCCESSED, _branchEventCallback);
+
+			_branch.addEventListener(BranchEvent.GET_REFERRAL_CODE_FAILED, _branchEventCallback);
+			_branch.addEventListener(BranchEvent.GET_REFERRAL_CODE_SUCCESSED, _branchEventCallback);
+			
+			_branch.addEventListener(BranchEvent.APPLY_REFERRAL_CODE_FAILED, _branchEventCallback);
+			_branch.addEventListener(BranchEvent.APPLY_REFERRAL_CODE_SUCCESSED, _branchEventCallback);
 
 			_branch.init();
 		}
@@ -68,6 +74,10 @@ package {
 			
 			_branch.getCreditsHistory();
 			
+			_branch.getReferralCode();
+			
+			//_branch.applyReferralCode(code);
+			
 			var sessionParams:String = _branch.getLatestReferringParams();
 			trace("sessionParams: " + sessionParams);
 			
@@ -75,50 +85,12 @@ package {
 			trace("installParams: " + installParams);
 		}
 		
-		private function _setIdentitySuccessed(bEvt:BranchEvent):void {
-			trace("BranchEvent.SET_IDENTITY_SUCCESSED", bEvt.informations);
-		}
-		
-		private function _getShortUrlSuccessed(bEvt:BranchEvent):void {
-			trace("BranchEvent.GET_SHORT_URL_SUCCESSED", bEvt.informations);
-		}
-		
-		private function _getCreditsSuccessed(bEvt:BranchEvent):void {
-			trace("BranchEvent.GET_CREDITS_SUCCESSED", bEvt.informations);
+		private function _branchEventCallback(bEvt:BranchEvent):void {
 			
-			_branch.redeemRewards(5);
-		}
-		
-		private function _redeemRewardsSuccessed(bEvt:BranchEvent):void {
-			trace("BranchEvent.REDEEM_REWARDS_FAILED", bEvt.informations);
-		}
-		
-		private function _getCreditsHistorySuccessed(bEvt:BranchEvent):void {
-			trace("BranchEvent.GET_CREDITS_HISTORY_SUCCESSED", bEvt.informations);
-		}
-		
-		private function _initFailed(bEvt:BranchEvent):void {
-			trace("BranchEvent.INIT_FAILED", bEvt.informations);
-		}
-		
-		private function _setIdentityFailed(bEvt:BranchEvent):void {
-			trace("BranchEvent.SET_IDENTITY_FAILED", bEvt.informations);
-		}
-		
-		private function _getShortUrlFailed(bEvt:BranchEvent):void {
-			trace("BranchEvent.GET_SHORT_URL_FAILED", bEvt.informations);
-		}
-
-		private function _getCreditsFailed(bEvt:BranchEvent):void {
-			trace("BranchEvent.GET_CREDITS_FAILED", bEvt.informations);
-		}
-		
-		private function _redeemRewardsFailed(bEvt:BranchEvent):void {
-			trace("BranchEvent.REDEEM_REWARDS_FAILED", bEvt.informations);
-		}
-		
-		private function _getCreditsHistoryFailed(bEvt:BranchEvent):void {
-			trace("BranchEvent.GET_CREDITS_HISTORY_FAILED", bEvt.informations);
+			trace(bEvt.type, bEvt.informations);
+			
+			if (bEvt.type == BranchEvent.GET_CREDITS_SUCCESSED)
+				_branch.redeemRewards(5);
 		}
 	}
 }

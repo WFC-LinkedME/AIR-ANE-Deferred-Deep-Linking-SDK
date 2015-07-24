@@ -1,10 +1,12 @@
 package io.branch.nativeExtensions.branch;
 
+import io.branch.nativeExtensions.branch.functions.ApplyReferralCodeFunction;
 import io.branch.nativeExtensions.branch.functions.CloseSessionFunction;
 import io.branch.nativeExtensions.branch.functions.GetCreditsFunction;
 import io.branch.nativeExtensions.branch.functions.GetCreditsHistoryFunction;
 import io.branch.nativeExtensions.branch.functions.GetFirstReferringParamsFunction;
 import io.branch.nativeExtensions.branch.functions.GetLatestReferringParamsFunction;
+import io.branch.nativeExtensions.branch.functions.GetReferralCodeFunction;
 import io.branch.nativeExtensions.branch.functions.GetShortUrlFunction;
 import io.branch.nativeExtensions.branch.functions.InitFunction;
 import io.branch.nativeExtensions.branch.functions.LogoutFunction;
@@ -39,6 +41,8 @@ public class BranchExtensionContext extends FREContext {
 		functionMap.put("getCredits", new GetCreditsFunction());
 		functionMap.put("redeemRewards", new RedeemRewardsFunction());
 		functionMap.put("getCreditsHistory", new GetCreditsHistoryFunction());
+		functionMap.put("getReferralCode", new GetReferralCodeFunction());
+		functionMap.put("applyReferralCode", new ApplyReferralCodeFunction());
 		functionMap.put("closeSession", new CloseSessionFunction());
 		
 		return functionMap;

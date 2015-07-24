@@ -119,5 +119,22 @@ package io.branch.nativeExtensions.branch {
 		public function getCreditsHistory(bucket:String = ""):void {
 
 		}
+
+		/**
+		* Retrieve the referral code created by current user.
+		* Be sure to listen <code>GET_REFERRAL_CODE_SUCCESSED</code> and <code>GET_REFERRAL_CODE_FAILED</code> events.
+		*/
+		public function getReferralCode():void {
+
+		}
+
+		/**
+		* Apply a referral code if it exists in Branch system and is still valid.
+		* Be sure to listen <code>GET_REFERRAL_CODE_SUCCESSED</code> and <code>GET_REFERRAL_CODE_FAILED</code> events.
+		* @param code The referral code to apply.
+		*/
+		public function applyReferralCode(code:String):void {
+
+		}
 	}
 }

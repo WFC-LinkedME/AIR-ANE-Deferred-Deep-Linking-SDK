@@ -29,6 +29,8 @@
 - (void) getCredits:(NSString *) bucket;
 - (void) redeemRewards:(NSInteger) credits andBucket:(NSString *) bucket;
 - (void) getCreditsHistory:(NSString *) bucket;
+- (void) getReferralCode;
+- (void) applyReferralCode:(NSString *) code;
 
 - (void) dispatchEvent:(NSString *) event withParams:(NSString * ) params;
 

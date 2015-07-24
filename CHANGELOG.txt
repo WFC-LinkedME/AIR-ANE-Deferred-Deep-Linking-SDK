@@ -6,6 +6,7 @@ v1.1.0 WORK IN PROGRESS
 - added getCredits method.
 - added redeemRewards method.
 - added getCreditsHistory method.
+- added getReferralCode & applyReferralCode methods.
 
 v1.0.1
 - the Branch activity is finished once the init function is called.
