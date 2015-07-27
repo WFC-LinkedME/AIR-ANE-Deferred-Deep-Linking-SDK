@@ -38,6 +38,9 @@ package {
 			_branch.addEventListener(BranchEvent.GET_REFERRAL_CODE_FAILED, _branchEventCallback);
 			_branch.addEventListener(BranchEvent.GET_REFERRAL_CODE_SUCCESSED, _branchEventCallback);
 			
+			_branch.addEventListener(BranchEvent.CREATE_REFERRAL_CODE_FAILED, _branchEventCallback);
+			_branch.addEventListener(BranchEvent.CREATE_REFERRAL_CODE_SUCCESSED, _branchEventCallback);
+			
 			_branch.addEventListener(BranchEvent.APPLY_REFERRAL_CODE_FAILED, _branchEventCallback);
 			_branch.addEventListener(BranchEvent.APPLY_REFERRAL_CODE_SUCCESSED, _branchEventCallback);
 
@@ -76,6 +79,7 @@ package {
 			
 			_branch.getReferralCode();
 			
+			//_branch.createReferralCode(prefix, amount, expiration, bucket, calculationType, location)
 			//_branch.applyReferralCode(code);
 			
 			var sessionParams:String = _branch.getLatestReferringParams();

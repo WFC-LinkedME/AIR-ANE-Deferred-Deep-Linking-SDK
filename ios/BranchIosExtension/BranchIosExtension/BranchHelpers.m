@@ -158,6 +158,19 @@
     }];
 }
 
+- (void) createReferralCode:(NSString *)prefix amount:(NSInteger)amount expiration:(NSInteger)expiration bucket:(NSString *)bucket usageType:(NSInteger)usageType rewardLocation:(NSInteger)rewardLocation {
+    
+    
+    [branch getPromoCodeWithPrefix:prefix amount:amount expiration:[NSDate dateWithTimeIntervalSince1970:expiration] bucket:bucket usageType:usageType rewardLocation:rewardLocation callback:^(NSDictionary *params, NSError *error) {
+        
+        if (!error)
+            [self dispatchEvent:@"CREATE_REFERRAL_CODE_SUCCESSED" withParams:[params objectForKey:@"promo_code"]];
+        
+        else
+            [self dispatchEvent:@"CREATE_REFERRAL_CODE_FAILED" withParams:error.description];
+    }];
+}
+
 - (void) applyReferralCode:(NSString *) code {
     
     [branch applyPromoCode:code callback:^(NSDictionary *params, NSError *error) {

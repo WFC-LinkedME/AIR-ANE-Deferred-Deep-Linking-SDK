@@ -74,6 +74,17 @@ package io.branch.nativeExtensions.branch {
 		*/
 		static public const GET_REFERRAL_CODE_FAILED:String = "GET_REFERRAL_CODE_FAILED";
 
+
+		/**
+		* Dispatched when the <code>createReferralCode</code> method is called and successed. See event's <code>informations</code> for details.
+		*/
+		static public const CREATE_REFERRAL_CODE_SUCCESSED:String = "CREATE_REFERRAL_CODE_SUCCESSED";
+
+		/**
+		* Dispatched when the <code>createReferralCode</code> has failed. See event's <code>informations</code> for details.
+		*/
+		static public const CREATE_REFERRAL_CODE_FAILED:String = "CREATE_REFERRAL_CODE_FAILED";
+
 		/**
 		* Dispatched when the <code>applyReferralCode</code> method is called and successed. See event's <code>informations</code> for details.
 		*/
@@ -94,7 +105,7 @@ package io.branch.nativeExtensions.branch {
 
 
 		/**
-		* <code>informations</code> contains the error from the base SDK or the the result expected like for <code>getShortUrl</code>, <code>getReferralCode</code>.
+		* <code>informations</code> contains the error from the base SDK or the the result expected like for <code>getShortUrl</code>, <code>getReferralCode</code>, <code>createReferralCode</code>.
 		* It can also contains credits, think to turn them into <code>int</code>!
 		* And also the credits history as a stringified array!
 		* Or the code referral applied as strinigied JSON.

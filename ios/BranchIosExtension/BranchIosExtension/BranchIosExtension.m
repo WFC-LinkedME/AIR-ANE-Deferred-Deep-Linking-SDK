@@ -138,6 +138,31 @@ DEFINE_ANE_FUNCTION(getReferralCode) {
     return NULL;
 }
 
+DEFINE_ANE_FUNCTION(createReferralCode) {
+    
+    NSString* prefix;
+    [typeConverter FREGetObject:argv[0] asString:&prefix];
+    
+    int32_t amount;
+    FREGetObjectAsInt32(argv[1], &amount);
+    
+    int32_t expiration;
+    FREGetObjectAsInt32(argv[2], &expiration);
+    
+    NSString* bucket;
+    [typeConverter FREGetObject:argv[3] asString:&bucket];
+    
+    int32_t type;
+    FREGetObjectAsInt32(argv[4], &type);
+    
+    int32_t rewardLocation;
+    FREGetObjectAsInt32(argv[5], &rewardLocation);
+    
+    [branchHelpers createReferralCode:prefix amount:amount expiration:expiration bucket:bucket usageType:type rewardLocation:rewardLocation];
+    
+    return NULL;
+}
+
 DEFINE_ANE_FUNCTION(applyReferralCode) {
     
     NSString* code;
@@ -218,6 +243,7 @@ void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext 
         MAP_FUNCTION(redeemRewards, NULL),
         MAP_FUNCTION(getCreditsHistory, NULL),
         MAP_FUNCTION(getReferralCode, NULL),
+        MAP_FUNCTION(createReferralCode, NULL),
         MAP_FUNCTION(applyReferralCode, NULL)
     };
     
