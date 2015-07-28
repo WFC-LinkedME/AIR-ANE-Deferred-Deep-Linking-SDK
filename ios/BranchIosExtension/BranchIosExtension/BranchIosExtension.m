@@ -76,6 +76,19 @@ DEFINE_ANE_FUNCTION(logout) {
     return NULL;
 }
 
+DEFINE_ANE_FUNCTION(userCompletedAction) {
+    
+    NSString* action;
+    [typeConverter FREGetObject:argv[0] asString:&action];
+    
+    NSString* appState;
+    [typeConverter FREGetObject:argv[1] asString:&appState];
+    
+    [branchHelpers userCompletedAction:action withState:appState];
+    
+    return NULL;
+}
+
 DEFINE_ANE_FUNCTION(getLatestReferringParams) {
     
     NSDictionary *sessionParams = [branchHelpers getLatestReferringParams];
@@ -247,6 +260,7 @@ void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext 
         MAP_FUNCTION(setIdentity, NULL),
         MAP_FUNCTION(getShortUrl, NULL),
         MAP_FUNCTION(logout, NULL),
+        MAP_FUNCTION(userCompletedAction, NULL),
         MAP_FUNCTION(getLatestReferringParams, NULL),
         MAP_FUNCTION(getFirstReferringParams, NULL),
         MAP_FUNCTION(getCredits, NULL),

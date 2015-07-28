@@ -93,6 +93,15 @@ package io.branch.nativeExtensions.branch {
 		}
 
 		/**
+		* Register Custom Events
+		* @param action
+		* @param state Store some state with the event, a stringified JSON.
+		*/
+		public function userCompletedAction(action:String, stateStringifiedJSON:String = "{}"):void {
+
+		}
+
+		/**
 		* Reward balances change randomly on the backend when certain actions are taken (defined by your rules), so it'll make an asynchronous call to retrieve the balance.
 		* Be sure to listen <code>GET_CREDITS</code> event.
 		* @param bucket The bucket to get credits balance from.

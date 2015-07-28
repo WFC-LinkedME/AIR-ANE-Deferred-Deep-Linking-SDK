@@ -26,6 +26,7 @@
 
 - (NSDictionary *) getLatestReferringParams;
 - (NSDictionary *) getFirstReferringParams;
+- (void) userCompletedAction:(NSString *) action withState:(NSString *) appState;
 - (void) getCredits:(NSString *) bucket;
 - (void) redeemRewards:(NSInteger) credits andBucket:(NSString *) bucket;
 - (void) getCreditsHistory:(NSString *) bucket;

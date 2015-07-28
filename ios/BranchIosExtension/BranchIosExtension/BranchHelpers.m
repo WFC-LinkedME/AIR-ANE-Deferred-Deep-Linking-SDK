@@ -100,6 +100,16 @@
     [branch logout];
 }
 
+- (void) userCompletedAction:(NSString *) action withState:(NSString *) appState {
+    
+    NSData *data = [appState dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *jsonError;
+    
+    NSDictionary* params = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
+    
+    [branch userCompletedAction:action withState:params];
+}
+
 - (NSDictionary *) getLatestReferringParams {
     
     return [branch getLatestReferringParams];

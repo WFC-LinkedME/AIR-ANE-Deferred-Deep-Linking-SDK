@@ -74,6 +74,11 @@ package io.branch.nativeExtensions.branch {
 			return extensionContext.call("getFirstReferringParams") as String;
 		}
 
+		public function userCompletedAction(action:String, stateStringifiedJSON:String = "{}"):void {
+
+			extensionContext.call("userCompletedAction", action, stateStringifiedJSON);
+		}
+
 		public function getCredits(bucket:String = ""):void {
 			
 			extensionContext.call("getCredits", bucket);

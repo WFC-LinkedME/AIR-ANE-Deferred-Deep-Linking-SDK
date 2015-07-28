@@ -58,6 +58,7 @@ public class GetShortUrlFunction extends BaseFunction {
 		} catch (JSONException t) {
 			
 			BranchExtension.context.dispatchStatusEventAsync("GET_SHORT_URL_FAILED", "Could not parse malformed JSON");
+			t.printStackTrace();
 		}
 		
 		return null;
