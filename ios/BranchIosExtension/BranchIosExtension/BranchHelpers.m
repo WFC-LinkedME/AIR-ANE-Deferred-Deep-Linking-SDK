@@ -63,36 +63,22 @@
     if (jsonError)
         [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:jsonError.description];
     
-    //find a way to have the same callback for everyone...
+    callbackWithUrl callback = ^(NSString *url, NSError *error) {
+        
+        if (!error)
+            [self dispatchEvent:@"GET_SHORT_URL_SUCCESSED" withParams:url];
+        
+        else
+            [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:error.description];
+    };
     
     if (alias.length != 0)
-        [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andAlias:alias andCallback:^(NSString *url, NSError *error) {
-            
-            if (!error)
-                [self dispatchEvent:@"GET_SHORT_URL_SUCCESSED" withParams:url];
-                
-            else
-                [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:error.description];
-        }];
+        [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andAlias:alias andCallback:callback];
     
     else if (type != -1)
-        [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andType:type andCallback:^(NSString *url, NSError *error) {
-            
-            if (!error)
-                [self dispatchEvent:@"GET_SHORT_URL_SUCCESSED" withParams:url];
-            
-            else
-                [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:error.description];
-        }];
+        [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andType:type andCallback:callback];
     else
-        [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andCallback:^(NSString *url, NSError *error) {
-        
-            if (!error)
-                [self dispatchEvent:@"GET_SHORT_URL_SUCCESSED" withParams:url];
-            
-            else
-                [self dispatchEvent:@"GET_SHORT_URL_FAILED" withParams:error.description];
-        }];
+        [branch getShortURLWithParams:params andTags:tags andChannel:channel andFeature:feature andStage:stage andCallback:callback];
 }
 
 - (void) logout {
@@ -107,7 +93,8 @@
     
     NSDictionary* params = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonError];
     
-    [branch userCompletedAction:action withState:params];
+    if (!jsonError)
+        [branch userCompletedAction:action withState:params];
 }
 
 - (NSDictionary *) getLatestReferringParams {
