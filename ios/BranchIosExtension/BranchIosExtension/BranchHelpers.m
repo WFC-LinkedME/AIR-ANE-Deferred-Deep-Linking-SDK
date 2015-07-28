@@ -171,6 +171,23 @@
     }];
 }
 
+- (void) validateReferralCode:(NSString *) code {
+    
+    [branch validatePromoCode:code callback:^(NSDictionary *params, NSError *error) {
+        
+        if (!error) {
+            
+            if ([code isEqualToString:[params objectForKey:@"promo_code"]])
+                [self dispatchEvent:@"VALIDATE_REFERRAL_CODE_SUCCESSED" withParams:@""];
+            
+            else
+                [self dispatchEvent:@"VALIDATE_REFERRAL_CODE_FAILED" withParams:@"invalid (should never happen)"];
+            
+        } else
+            [self dispatchEvent:@"VALIDATE_REFERRAL_CODE_FAILED" withParams:error.description];
+    }];
+}
+
 - (void) applyReferralCode:(NSString *) code {
     
     [branch applyPromoCode:code callback:^(NSDictionary *params, NSError *error) {

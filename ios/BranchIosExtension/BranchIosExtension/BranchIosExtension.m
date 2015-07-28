@@ -163,6 +163,16 @@ DEFINE_ANE_FUNCTION(createReferralCode) {
     return NULL;
 }
 
+DEFINE_ANE_FUNCTION(validateReferralCode) {
+    
+    NSString* code;
+    [typeConverter FREGetObject:argv[0] asString:&code];
+    
+    [branchHelpers validateReferralCode:code];
+    
+    return NULL;
+}
+
 DEFINE_ANE_FUNCTION(applyReferralCode) {
     
     NSString* code;
@@ -244,6 +254,7 @@ void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext 
         MAP_FUNCTION(getCreditsHistory, NULL),
         MAP_FUNCTION(getReferralCode, NULL),
         MAP_FUNCTION(createReferralCode, NULL),
+        MAP_FUNCTION(validateReferralCode, NULL),
         MAP_FUNCTION(applyReferralCode, NULL)
     };
     

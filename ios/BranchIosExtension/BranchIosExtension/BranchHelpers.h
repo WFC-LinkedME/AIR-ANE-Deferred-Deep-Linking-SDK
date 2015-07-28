@@ -31,6 +31,7 @@
 - (void) getCreditsHistory:(NSString *) bucket;
 - (void) getReferralCode;
 - (void) createReferralCode:(NSString *)prefix amount:(NSInteger)amount expiration:(NSInteger)expiration bucket:(NSString *)bucket usageType:(NSInteger)usageType rewardLocation:(NSInteger)rewardLocation;
+- (void) validateReferralCode:(NSString *) code;
 - (void) applyReferralCode:(NSString *) code;
 
 - (void) dispatchEvent:(NSString *) event withParams:(NSString * ) params;

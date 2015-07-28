@@ -143,6 +143,17 @@ package io.branch.nativeExtensions.branch {
 		}
 
 		/**
+		* Validate if a referral code exists in Branch system and is still valid. A code is vaild if:
+		* <ul><li>It hasn't expired.</li>
+		* <li>If its calculation type is uniqe, it hasn't been applied by current user.</li></ul>
+		* Be sure to listen <code>VALIDATE_REFERRAL_CODE_SUCCESSED</code> and <code>VALIDATE_REFERRAL_CODE_FAILED</code> events.
+		* @param code The referral code to validate.
+		*/
+		public function validateReferralCode(code:String):void {
+
+		}
+
+		/**
 		* Apply a referral code if it exists in Branch system and is still valid.
 		* Be sure to listen <code>GET_REFERRAL_CODE_SUCCESSED</code> and <code>GET_REFERRAL_CODE_FAILED</code> events.
 		* @param code The referral code to apply.

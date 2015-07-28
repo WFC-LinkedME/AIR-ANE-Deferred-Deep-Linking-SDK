@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B05B4F921B4FC5BE00ACF27D /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B05B4F911B4FC5BE00ACF27D /* Branch.framework */; };
+		B0274B831B677BD40078740A /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0274B821B677BD40078740A /* Branch.framework */; };
 		B06432E51AD563B500F7A2C1 /* BranchIosExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B06432E41AD563B500F7A2C1 /* BranchIosExtension.m */; };
 		B09BCCC61ADC072500390FE5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09BCCC11ADC06B000390FE5 /* CoreTelephony.framework */; };
 		B09BCCCB1ADC092B00390FE5 /* TypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = B09BCCCA1ADC092B00390FE5 /* TypeConversion.m */; };
@@ -27,7 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		B05B4F911B4FC5BE00ACF27D /* Branch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Branch.framework; sourceTree = "<group>"; };
+		B0274B821B677BD40078740A /* Branch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Branch.framework; sourceTree = "<group>"; };
 		B06432DF1AD563B500F7A2C1 /* libBranchIosExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBranchIosExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06432E41AD563B500F7A2C1 /* BranchIosExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BranchIosExtension.m; sourceTree = "<group>"; };
 		B06432F91AD5648400F7A2C1 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B05B4F921B4FC5BE00ACF27D /* Branch.framework in Frameworks */,
+				B0274B831B677BD40078740A /* Branch.framework in Frameworks */,
 				B09BCCC61ADC072500390FE5 /* CoreTelephony.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,7 +84,7 @@
 		B09BCCC51ADC06FA00390FE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B05B4F911B4FC5BE00ACF27D /* Branch.framework */,
+				B0274B821B677BD40078740A /* Branch.framework */,
 				B09BCCC11ADC06B000390FE5 /* CoreTelephony.framework */,
 			);
 			name = Frameworks;

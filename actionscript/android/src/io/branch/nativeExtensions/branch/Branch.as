@@ -99,6 +99,11 @@ package io.branch.nativeExtensions.branch {
 			extensionContext.call("createReferralCode", prefix, amount, expiration, bucket, calculationType, location);
 		}
 
+		public function validateReferralCode(code:String):void {
+			
+			extensionContext.call("validateReferralCode", code);
+		}
+
 		public function applyReferralCode(code:String):void {
 
 			extensionContext.call("applyReferralCode", code);

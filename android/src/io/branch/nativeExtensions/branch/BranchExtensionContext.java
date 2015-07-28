@@ -13,6 +13,7 @@ import io.branch.nativeExtensions.branch.functions.InitFunction;
 import io.branch.nativeExtensions.branch.functions.LogoutFunction;
 import io.branch.nativeExtensions.branch.functions.RedeemRewardsFunction;
 import io.branch.nativeExtensions.branch.functions.SetIdentityFunction;
+import io.branch.nativeExtensions.branch.functions.ValidateReferralCodeFunction;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +46,7 @@ public class BranchExtensionContext extends FREContext {
 		functionMap.put("getReferralCode", new GetReferralCodeFunction());
 		functionMap.put("applyReferralCode", new ApplyReferralCodeFunction());
 		functionMap.put("createReferralCode", new CreateReferralCodeFunction());
+		functionMap.put("validateReferralCode", new ValidateReferralCodeFunction());
 		functionMap.put("closeSession", new CloseSessionFunction());
 		
 		return functionMap;
