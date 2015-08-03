@@ -164,7 +164,7 @@ package io.branch.nativeExtensions.branch {
 
 		/**
 		* Apply a referral code if it exists in Branch system and is still valid.
-		* Be sure to listen <code>GET_REFERRAL_CODE_SUCCESSED</code> and <code>GET_REFERRAL_CODE_FAILED</code> events.
+		* Be sure to listen <code>APPLY_REFERRAL_CODE_SUCCESSED</code> and <code>APPLY_REFERRAL_CODE_FAILED</code> events.
 		* @param code The referral code to apply.
 		*/
 		public function applyReferralCode(code:String):void {
