@@ -1,4 +1,4 @@
-Branch io Adobe AIR Native Extension for iOS & Android.
+# Branch io Adobe AIR Native Extension for iOS & Android.
 
 Installation
 ============
