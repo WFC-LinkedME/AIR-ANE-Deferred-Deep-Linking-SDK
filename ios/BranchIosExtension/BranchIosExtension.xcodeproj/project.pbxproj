@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B06432E51AD563B500F7A2C1 /* BranchIosExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B06432E41AD563B500F7A2C1 /* BranchIosExtension.m */; };
+		B06CBBAD1C1B39F30043877E /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B06CBBAC1C1B39F30043877E /* Branch.framework */; };
 		B09BCCC61ADC072500390FE5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09BCCC11ADC06B000390FE5 /* CoreTelephony.framework */; };
 		B09BCCCB1ADC092B00390FE5 /* TypeConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = B09BCCCA1ADC092B00390FE5 /* TypeConversion.m */; };
 		B09BCCCE1ADC09D600390FE5 /* BranchHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = B09BCCCD1ADC09D600390FE5 /* BranchHelpers.m */; };
-		B0BE60461B67FEA9006AB2F4 /* Branch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BE60451B67FEA9006AB2F4 /* Branch.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,12 +30,12 @@
 		B06432DF1AD563B500F7A2C1 /* libBranchIosExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libBranchIosExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B06432E41AD563B500F7A2C1 /* BranchIosExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BranchIosExtension.m; sourceTree = "<group>"; };
 		B06432F91AD5648400F7A2C1 /* FlashRuntimeExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashRuntimeExtensions.h; sourceTree = "<group>"; };
+		B06CBBAC1C1B39F30043877E /* Branch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Branch.framework; sourceTree = "<group>"; };
 		B09BCCC11ADC06B000390FE5 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		B09BCCC91ADC092B00390FE5 /* TypeConversion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeConversion.h; sourceTree = "<group>"; };
 		B09BCCCA1ADC092B00390FE5 /* TypeConversion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeConversion.m; sourceTree = "<group>"; };
 		B09BCCCC1ADC09D600390FE5 /* BranchHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BranchHelpers.h; sourceTree = "<group>"; };
 		B09BCCCD1ADC09D600390FE5 /* BranchHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BranchHelpers.m; sourceTree = "<group>"; };
-		B0BE60451B67FEA9006AB2F4 /* Branch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Branch.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0BE60461B67FEA9006AB2F4 /* Branch.framework in Frameworks */,
+				B06CBBAD1C1B39F30043877E /* Branch.framework in Frameworks */,
 				B09BCCC61ADC072500390FE5 /* CoreTelephony.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,7 +84,7 @@
 		B09BCCC51ADC06FA00390FE5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B0BE60451B67FEA9006AB2F4 /* Branch.framework */,
+				B06CBBAC1C1B39F30043877E /* Branch.framework */,
 				B09BCCC11ADC06B000390FE5 /* CoreTelephony.framework */,
 			);
 			name = Frameworks;

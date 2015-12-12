@@ -228,6 +228,14 @@ bool applicationOpenURLSourceApplication(id self, SEL _cmd, UIApplication* appli
     return YES;
 }
 
+bool applicationContinueUserActivity(id self, SEL _cmd, UIApplication* application, NSUserActivity* userActivity, void (^)(NSArray *restorableObjects) restorationHandler {
+    //NSLog(@"applicationContinueUserActivity");
+    
+    BOOL handledByBranch = [[Branch getInstance] continueUserActivity:userActivity];
+    
+    return handledByBranch;
+}
+
 void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, uint32_t* numFunctionsToSet, const FRENamedFunction** functionsToSet) {
     
     id delegate = [[UIApplication sharedApplication] delegate];
@@ -243,12 +251,15 @@ void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext 
         
         SEL selectorToOverride1 = @selector(application:openURL:sourceApplication:annotation:);
         SEL selectorToOverride2 = @selector(application:didFinishLaunchingWithOptions:);
+        SEL selectorToOverride3 = @selector(application:userActivity:restoration:);
         
         Method m1 = class_getInstanceMethod(objectClass, selectorToOverride1);
         Method m2 = class_getInstanceMethod(objectClass, selectorToOverride2);
+        Method m3 = class_getInstanceMethod(objectClass, selectorToOverride3);
         
         class_addMethod(modDelegate, selectorToOverride1, (IMP)applicationOpenURLSourceApplication, method_getTypeEncoding(m1));
-        class_addMethod(modDelegate, selectorToOverride1, (IMP)applicationDidFinishLaunchingWithOptions, method_getTypeEncoding(m2));
+        class_addMethod(modDelegate, selectorToOverride2, (IMP)applicationDidFinishLaunchingWithOptions, method_getTypeEncoding(m2));
+        class_addMethod(modDelegate, selectorToOverride3, (IMP)applicationContinueUserActivity, method_getTypeEncoding(m3));
         
         objc_registerClassPair(modDelegate);
     }
