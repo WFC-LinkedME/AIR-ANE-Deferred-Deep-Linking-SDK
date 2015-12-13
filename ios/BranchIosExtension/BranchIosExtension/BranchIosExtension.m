@@ -228,7 +228,7 @@ bool applicationOpenURLSourceApplication(id self, SEL _cmd, UIApplication* appli
     return YES;
 }
 
-bool applicationContinueUserActivity(id self, SEL _cmd, UIApplication* application, NSUserActivity* userActivity, void (^)(NSArray *restorableObjects) restorationHandler {
+bool applicationContinueUserActivity(id self, SEL _cmd, UIApplication* application, NSUserActivity* userActivity, id restorationHandler) {
     //NSLog(@"applicationContinueUserActivity");
     
     BOOL handledByBranch = [[Branch getInstance] continueUserActivity:userActivity];
@@ -251,7 +251,7 @@ void BranchContextInitializer(void* extData, const uint8_t* ctxType, FREContext 
         
         SEL selectorToOverride1 = @selector(application:openURL:sourceApplication:annotation:);
         SEL selectorToOverride2 = @selector(application:didFinishLaunchingWithOptions:);
-        SEL selectorToOverride3 = @selector(application:userActivity:restoration:);
+        SEL selectorToOverride3 = @selector(application:continueUserActivity:restorationHandler:);
         
         Method m1 = class_getInstanceMethod(objectClass, selectorToOverride1);
         Method m2 = class_getInstanceMethod(objectClass, selectorToOverride2);
