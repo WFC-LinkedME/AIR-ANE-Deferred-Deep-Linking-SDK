@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<application xmlns="http://ns.adobe.com/air/application/18.0">
+<application xmlns="http://ns.adobe.com/air/application/19.0">
   <id>io.branch.BranchTest</id>
   <filename>Branch-ANE</filename>
   <name>Branch Test</name>
-  <versionNumber>1.1.0</versionNumber>
+  <versionNumber>1.1.2</versionNumber>
   <initialWindow>
     <content>Branch-AIR-ANE-SDK.swf</content>
     <aspectRatio>portrait</aspectRatio>

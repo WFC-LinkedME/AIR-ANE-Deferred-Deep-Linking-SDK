@@ -1,5 +1,5 @@
 v1.1.2 - work in progress
-- iOS SDK v0.11.11
+- iOS SDK v0.11.12
 
 v1.1.1
 - iOS SDK v0.10.4
